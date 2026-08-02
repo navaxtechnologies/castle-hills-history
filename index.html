@@ -1,0 +1,1206 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>The History of Castle Hills — A 75-Year Story (1951–2026)</title>
+<meta name="description" content="An online companion to the Castle Hills Historical Society's 75th-anniversary exhibit: the founding of Castle Hills, Texas, its families, businesses, notable residents, and the stories behind them." />
+
+<!--
+  ============================================================================
+  THE HISTORY OF CASTLE HILLS — single self-contained index.html
+  ----------------------------------------------------------------------------
+  • Source of truth: photographs of the Castle Hills Historical Society's
+    75th-anniversary exhibit (1951–2026). Every factual claim on this page is
+    drawn from text printed on those exhibit boards or from newspaper clippings
+    shown in them. No outside facts were added.
+  • Images live in ./images/ (filenames IMG_72xx.jpg, converted from the
+    original exhibit photos). To swap any image, replace the file or edit the
+    src below. Image assignments are noted in comments at each <img>.
+  • Open questions / source conflicts are flagged with <!-- TODO --> comments
+    throughout. Search "TODO" to find your punch list.
+  ============================================================================
+-->
+
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet" />
+
+<style>
+  /* ---------- Design tokens (Archival Editorial) ---------- */
+  :root{
+    --paper:#F7F3EC;        /* background */
+    --paper-2:#F1EADD;      /* alt panel */
+    --ink:#1F1B16;          /* primary text */
+    --muted:#6B6258;        /* secondary text */
+    --accent:#1E3A5F;       /* heritage navy */
+    --accent-soft:#2c4f7c;
+    --rule:#D8CFC2;         /* hairlines */
+    --shadow:0 1px 2px rgba(31,27,22,.06),0 8px 24px rgba(31,27,22,.08);
+    --shadow-lg:0 12px 40px rgba(31,27,22,.20);
+    --maxw:1120px;
+    --read:68ch;
+    --s:8px;                /* spacing base */
+    --serif:"Fraunces",Georgia,"Times New Roman",serif;
+    --sans:"Inter",system-ui,-apple-system,Segoe UI,Roboto,sans-serif;
+    --mono:"IBM Plex Mono",ui-monospace,Menlo,Consolas,monospace;
+  }
+
+  *,*::before,*::after{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  html{scroll-padding-top:84px;} /* offset for sticky nav on anchor jumps */
+  body{
+    margin:0;background:var(--paper);color:var(--ink);
+    font-family:var(--sans);font-size:18px;line-height:1.7;
+    -webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility;
+  }
+  img{max-width:100%;display:block;}
+  a{color:var(--accent);text-decoration:none;}
+  a:hover{text-decoration:underline;}
+  ::selection{background:#1E3A5F;color:#F7F3EC;}
+
+  h1,h2,h3{font-family:var(--serif);font-weight:500;line-height:1.1;margin:0;}
+  h2{font-size:clamp(1.9rem,4.5vw,3rem);letter-spacing:-.01em;}
+  h3{font-size:clamp(1.3rem,3vw,1.7rem);}
+  p{margin:0 0 1em;}
+
+  .label{
+    font-family:var(--mono);font-size:.74rem;letter-spacing:.18em;
+    text-transform:uppercase;color:var(--accent);font-weight:500;
+  }
+  .container{max-width:var(--maxw);margin:0 auto;padding:0 24px;}
+  .read{max-width:var(--read);}
+
+  /* ---------- Skip link & focus ---------- */
+  .skip{
+    position:absolute;left:8px;top:-48px;background:var(--accent);color:#fff;
+    padding:10px 16px;z-index:200;border-radius:0 0 6px 0;transition:top .2s ease;
+  }
+  .skip:focus{top:0;}
+  :focus-visible{outline:2.5px solid var(--accent);outline-offset:3px;border-radius:2px;}
+
+  /* ---------- Sticky nav ---------- */
+  header.nav{
+    position:sticky;top:0;z-index:100;
+    background:rgba(247,243,236,.86);backdrop-filter:saturate(140%) blur(10px);
+    border-bottom:1px solid var(--rule);
+  }
+  .nav-inner{display:flex;align-items:center;justify-content:space-between;gap:16px;
+    max-width:var(--maxw);margin:0 auto;padding:12px 24px;}
+  .brand{display:flex;align-items:baseline;gap:10px;font-family:var(--serif);
+    font-size:1.15rem;font-weight:600;color:var(--ink);white-space:nowrap;}
+  .brand span{font-family:var(--mono);font-size:.62rem;letter-spacing:.2em;
+    color:var(--muted);text-transform:uppercase;}
+  nav ul{display:flex;gap:4px;list-style:none;margin:0;padding:0;flex-wrap:wrap;justify-content:flex-end;}
+  nav a{
+    font-family:var(--mono);font-size:.72rem;letter-spacing:.1em;text-transform:uppercase;
+    color:var(--muted);padding:7px 10px;border-radius:6px;transition:color .2s,background .2s;
+  }
+  nav a:hover{color:var(--ink);text-decoration:none;background:var(--paper-2);}
+  nav a.active{color:var(--accent);background:var(--paper-2);}
+  .nav-toggle{display:none;}
+
+  /* ---------- Hero ---------- */
+  .hero{position:relative;min-height:92vh;display:flex;align-items:flex-end;
+    overflow:hidden;color:#F7F3EC;}
+  .hero-img{position:absolute;inset:0;background-size:cover;background-position:center;
+    will-change:transform;animation:kenburns 28s ease-in-out infinite alternate;}
+  @keyframes kenburns{from{transform:scale(1.06) translate3d(0,0,0);}to{transform:scale(1.16) translate3d(-1.5%,-1.5%,0);}}
+  .hero::after{content:"";position:absolute;inset:0;
+    background:linear-gradient(180deg,rgba(15,20,30,.30) 0%,rgba(15,20,30,.55) 55%,rgba(15,20,30,.86) 100%);}
+  .hero-content{position:relative;z-index:2;padding:0 24px 64px;max-width:var(--maxw);margin:0 auto;width:100%;}
+  .hero .label{color:#cdd8e6;}
+  .hero h1{font-family:var(--serif);font-weight:600;font-size:clamp(3rem,11vw,7.5rem);
+    line-height:.95;letter-spacing:-.02em;margin:.18em 0 .12em;text-shadow:0 2px 30px rgba(0,0,0,.35);}
+  .hero .sub{font-family:var(--serif);font-style:italic;font-weight:400;
+    font-size:clamp(1.15rem,2.6vw,1.7rem);color:#eef2f7;max-width:30ch;text-shadow:0 1px 12px rgba(0,0,0,.4);}
+  .hero .meta{margin-top:22px;font-family:var(--mono);font-size:.74rem;letter-spacing:.16em;
+    text-transform:uppercase;color:#cdd8e6;}
+  .scrollcue{position:absolute;left:50%;bottom:20px;transform:translateX(-50%);z-index:2;
+    font-family:var(--mono);font-size:.62rem;letter-spacing:.25em;color:#cdd8e6;text-transform:uppercase;
+    animation:bob 2.4s ease-in-out infinite;}
+  @keyframes bob{0%,100%{transform:translate(-50%,0);opacity:.7}50%{transform:translate(-50%,7px);opacity:1}}
+
+  /* ---------- Section scaffolding ---------- */
+  section{padding:clamp(56px,9vw,110px) 0;}
+  .section-head{margin-bottom:48px;}
+  .section-head h2{margin-top:8px;max-width:18ch;}
+  .section-head .intro{margin-top:18px;color:var(--muted);font-size:1.12rem;}
+  .alt{background:var(--paper-2);}
+  .divider{height:1px;background:var(--rule);max-width:var(--maxw);margin:0 auto;}
+
+  /* ---------- The Story intro ---------- */
+  .story p{font-size:1.22rem;}
+  .story .lead::first-letter{
+    font-family:var(--serif);font-weight:600;float:left;font-size:4.2rem;line-height:.74;
+    padding:6px 12px 0 0;color:var(--accent);
+  }
+  .pullquote{font-family:var(--serif);font-style:italic;font-size:clamp(1.4rem,3.4vw,2rem);
+    line-height:1.3;color:var(--ink);border-left:3px solid var(--accent);padding:6px 0 6px 26px;margin:34px 0;}
+  .pullquote cite{display:block;font-style:normal;font-family:var(--mono);font-size:.78rem;
+    letter-spacing:.08em;color:var(--muted);margin-top:12px;text-transform:uppercase;}
+
+  /* ---------- Timeline ---------- */
+  .timeline{position:relative;max-width:880px;margin:0 auto;padding-left:8px;}
+  .timeline::before{content:"";position:absolute;left:18px;top:6px;bottom:6px;width:2px;
+    background:linear-gradient(var(--rule),var(--rule));}
+  @media(min-width:760px){.timeline::before{left:50%;transform:translateX(-1px);}}
+  .node{position:relative;margin:0 0 40px;padding-left:56px;}
+  .node::before{content:"";position:absolute;left:11px;top:6px;width:16px;height:16px;border-radius:50%;
+    background:var(--paper);border:3px solid var(--accent);box-shadow:0 0 0 4px var(--paper);}
+  @media(min-width:760px){
+    .node{width:50%;padding:0;}
+    .node::before{left:auto;}
+    .node.l{padding-right:56px;text-align:right;left:0;}
+    .node.r{padding-left:56px;left:50%;}
+    .node.l::before{right:-8px;left:auto;}
+    .node.r::before{left:-8px;}
+  }
+  .node .yr{font-family:var(--mono);font-size:.82rem;letter-spacing:.12em;color:var(--accent);font-weight:500;}
+  .node h3{margin:6px 0 8px;font-size:1.28rem;}
+  .node p{font-size:.98rem;color:var(--muted);margin:0;}
+  .node figure{margin:14px 0 0;}
+  .node img{border-radius:6px;border:1px solid var(--rule);box-shadow:var(--shadow);
+    aspect-ratio:4/3;object-fit:cover;width:100%;}
+  @media(min-width:760px){.node.l figure{margin-left:auto;}.node img{max-width:300px;}.node.l img{margin-left:auto;}}
+
+  /* ---------- Chapter rows ---------- */
+  .chapter{display:grid;grid-template-columns:1fr;gap:36px;align-items:center;}
+  @media(min-width:880px){
+    .chapter{grid-template-columns:1fr 1fr;gap:60px;}
+    .chapter.flip .media{order:2;}
+  }
+  .chapter + .chapter{margin-top:clamp(64px,9vw,120px);}
+  .chapter .body h3{margin-bottom:18px;}
+  .chapter .body .label{margin-bottom:4px;display:block;}
+  .chapter .body p{color:var(--ink);}
+  .chapter .body p.note{color:var(--muted);font-size:.96rem;}
+  figure{margin:0;}
+  figure.framed img{
+    border:1px solid var(--rule);background:#fff;padding:8px;border-radius:3px;
+    box-shadow:var(--shadow);
+  }
+  figcaption{font-family:var(--mono);font-size:.74rem;line-height:1.55;color:var(--muted);
+    margin-top:10px;letter-spacing:.01em;}
+  .stack{display:grid;gap:16px;}
+  .stack-2{grid-template-columns:1fr 1fr;}
+  .roster{font-family:var(--mono);font-size:.82rem;color:var(--muted);line-height:1.9;
+    border-top:1px solid var(--rule);margin-top:22px;padding-top:16px;}
+  .roster b{color:var(--ink);font-weight:500;}
+
+  /* ---------- Gallery ---------- */
+  .grid{columns:240px;column-gap:16px;}
+  .grid figure{break-inside:avoid;margin:0 0 16px;cursor:zoom-in;position:relative;}
+  .grid img{width:100%;border-radius:4px;border:1px solid var(--rule);box-shadow:var(--shadow);
+    transition:transform .35s ease,box-shadow .35s ease;}
+  .grid figure:hover img{transform:translateY(-3px);box-shadow:var(--shadow-lg);}
+  .grid figcaption{margin-top:8px;}
+
+  /* ---------- Lightbox ---------- */
+  .lb{position:fixed;inset:0;z-index:300;background:rgba(15,16,18,.93);
+    display:none;align-items:center;justify-content:center;padding:4vh 4vw;}
+  .lb.open{display:flex;}
+  .lb figure{margin:0;max-width:min(94vw,1200px);max-height:92vh;display:flex;flex-direction:column;align-items:center;}
+  .lb img{max-width:100%;max-height:80vh;object-fit:contain;border-radius:4px;box-shadow:0 20px 60px rgba(0,0,0,.6);}
+  .lb figcaption{color:#dfe3e8;font-family:var(--mono);font-size:.82rem;margin-top:16px;text-align:center;max-width:70ch;}
+  .lb button{position:absolute;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.25);
+    color:#fff;width:50px;height:50px;border-radius:50%;font-size:1.5rem;cursor:pointer;
+    display:flex;align-items:center;justify-content:center;transition:background .2s;}
+  .lb button:hover{background:rgba(255,255,255,.2);}
+  .lb .close{top:18px;right:18px;}
+  .lb .prev{left:18px;top:50%;transform:translateY(-50%);}
+  .lb .next{right:18px;top:50%;transform:translateY(-50%);}
+  @media(max-width:600px){.lb .prev,.lb .next{top:auto;bottom:18px;transform:none;}.lb .prev{left:calc(50% - 60px);}.lb .next{right:calc(50% - 60px);}}
+
+  /* ---------- Sources ---------- */
+  .sources ul{list-style:none;padding:0;margin:0;columns:300px;column-gap:40px;}
+  .sources li{break-inside:avoid;padding:10px 0;border-bottom:1px solid var(--rule);
+    font-size:.95rem;color:var(--muted);}
+  .sources li b{color:var(--ink);font-weight:500;font-family:var(--sans);}
+  .ack{margin-top:40px;padding:28px;background:var(--paper);border:1px solid var(--rule);border-radius:8px;}
+  .ack p{margin:0;color:var(--muted);font-size:.98rem;}
+
+  /* ---------- Footer ---------- */
+  footer{padding:48px 0;border-top:1px solid var(--rule);background:var(--paper-2);}
+  .foot-inner{display:flex;flex-wrap:wrap;gap:14px;justify-content:space-between;align-items:center;
+    font-family:var(--mono);font-size:.74rem;letter-spacing:.06em;color:var(--muted);text-transform:uppercase;}
+
+  /* ---------- Verified Record section ---------- */
+  .badge{
+    font-family:var(--mono);font-size:.6rem;letter-spacing:.12em;text-transform:uppercase;
+    padding:3px 8px;border-radius:100px;border:1px solid;white-space:nowrap;font-weight:500;display:inline-block;
+  }
+  .badge.confirmed{color:#1E3A5F;border-color:#9fb4cc;background:#e9f0f8;}
+  .badge.probable{color:#8a5a1a;border-color:#d8bd8e;background:#f6eedd;}
+  .badge.unverified{color:#6B6258;border-color:var(--rule);background:var(--paper-2);}
+  .legend{display:flex;flex-wrap:wrap;gap:18px;margin-top:20px;font-family:var(--mono);
+    font-size:.72rem;color:var(--muted);align-items:center;}
+  .legend span{display:inline-flex;align-items:center;gap:8px;}
+
+  /* Inline verification tags used within chapter prose */
+  .vtag{font-family:var(--mono);font-size:.58rem;letter-spacing:.1em;text-transform:uppercase;
+    color:#1E3A5F;border:1px solid #9fb4cc;background:#e9f0f8;border-radius:100px;padding:2px 8px;
+    white-space:nowrap;vertical-align:middle;margin:0 2px;font-weight:500;line-height:1;}
+  .vtag.account{color:#8a5a1a;border-color:#d8bd8e;background:#f6eedd;}
+  .vcaveat{font-size:.88rem;color:var(--muted);margin-top:14px;padding-top:14px;border-top:1px dashed var(--rule);}
+  .vcaveat .vtag{margin-right:6px;}
+
+  .facts{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:18px;margin-top:8px;}
+  .fact{background:var(--paper);border:1px solid var(--rule);border-radius:8px;padding:20px 22px;box-shadow:var(--shadow);}
+  .alt .fact{background:#fbf8f2;}
+  .fact .k{font-family:var(--mono);font-size:.7rem;letter-spacing:.12em;text-transform:uppercase;color:var(--accent);margin-bottom:10px;}
+  .fact .v{font-size:1.02rem;line-height:1.5;color:var(--ink);}
+  .fact .v strong{font-family:var(--serif);font-weight:600;}
+  .fact .src{margin-top:12px;display:flex;align-items:center;gap:8px;flex-wrap:wrap;}
+  .fact .note{font-size:.86rem;color:var(--muted);margin-top:8px;}
+
+  /* Population chart (pure CSS bars) */
+  .pop{margin-top:8px;}
+  .pop .bars{display:grid;grid-template-columns:repeat(7,1fr);gap:10px;align-items:end;
+    height:230px;padding:18px 8px 0;border-bottom:2px solid var(--rule);}
+  .pop .bar{display:flex;flex-direction:column;justify-content:flex-end;align-items:center;height:100%;gap:8px;}
+  .pop .bar .col{width:100%;max-width:54px;background:linear-gradient(180deg,var(--accent-soft),var(--accent));
+    border-radius:4px 4px 0 0;transition:height 1s cubic-bezier(.2,.7,.2,1);box-shadow:var(--shadow);}
+  .pop .bar.peak .col{background:linear-gradient(180deg,#a3641f,#7A2E2E);}
+  .pop .bar .val{font-family:var(--mono);font-size:.78rem;color:var(--ink);font-weight:500;}
+  .pop .labels{display:grid;grid-template-columns:repeat(7,1fr);gap:10px;margin-top:10px;}
+  .pop .labels span{font-family:var(--mono);font-size:.74rem;color:var(--muted);text-align:center;}
+  .pop .cap{font-family:var(--mono);font-size:.74rem;color:var(--muted);margin-top:16px;}
+
+  .unconfirmed{margin-top:40px;background:var(--paper);border:1px solid var(--rule);border-left:3px solid #b08440;
+    border-radius:8px;padding:24px 26px;}
+  .alt .unconfirmed{background:#fbf8f2;}
+  .unconfirmed h3{font-size:1.15rem;margin-bottom:14px;}
+  .unconfirmed ul{margin:0;padding-left:20px;color:var(--muted);font-size:.96rem;line-height:1.7;}
+  .unconfirmed li{margin-bottom:8px;}
+  .unconfirmed li b{color:var(--ink);font-weight:500;}
+
+  @media(max-width:600px){
+    .pop .bars{height:180px;}
+    .pop .bar .val{font-size:.62rem;}
+    .pop .labels span{font-size:.62rem;}
+  }
+
+  /* ---------- Scroll-reveal ---------- */
+  .reveal{opacity:0;transform:translateY(24px);transition:opacity .8s ease,transform .8s ease;}
+  .reveal.in{opacity:1;transform:none;}
+
+  /* ---------- Mobile nav ---------- */
+  @media(max-width:760px){
+    .nav-toggle{display:inline-flex;align-items:center;gap:8px;background:none;border:1px solid var(--rule);
+      border-radius:6px;padding:7px 12px;font-family:var(--mono);font-size:.7rem;letter-spacing:.12em;
+      text-transform:uppercase;color:var(--ink);cursor:pointer;}
+    nav ul{position:absolute;top:100%;left:0;right:0;flex-direction:column;gap:0;
+      background:var(--paper);border-bottom:1px solid var(--rule);padding:8px 16px 16px;
+      max-height:0;overflow:hidden;transition:max-height .3s ease;justify-content:flex-start;}
+    nav ul.show{max-height:420px;}
+    nav a{display:block;padding:11px 6px;border-bottom:1px solid var(--rule);}
+    .stack-2{grid-template-columns:1fr;}
+  }
+
+  /* ---------- Respect reduced motion ---------- */
+  @media(prefers-reduced-motion:reduce){
+    html{scroll-behavior:auto;}
+    .hero-img{animation:none;transform:scale(1.04);}
+    .scrollcue{animation:none;}
+    .reveal{opacity:1;transform:none;transition:none;}
+    .grid figure:hover img{transform:none;}
+    *{scroll-behavior:auto !important;}
+  }
+</style>
+</head>
+<body>
+<a class="skip" href="#story">Skip to content</a>
+
+<!-- ============================= NAV ============================= -->
+<header class="nav">
+  <div class="nav-inner">
+    <div class="brand">Castle&nbsp;Hills <span>Est. 1951</span></div>
+    <button class="nav-toggle" aria-expanded="false" aria-controls="navmenu">Menu</button>
+    <nav aria-label="Sections">
+      <ul id="navmenu">
+        <li><a href="#story">The Story</a></li>
+        <li><a href="#timeline">Timeline</a></li>
+        <li><a href="#castle">The Castle</a></li>
+        <li><a href="#founding">Founding</a></li>
+        <li><a href="#business">Business</a></li>
+        <li><a href="#people">People</a></li>
+        <li><a href="#vice">Vice &amp; Crime</a></li>
+        <li><a href="#civic">Civic Life</a></li>
+        <li><a href="#record">The Record</a></li>
+        <li><a href="#gallery">Gallery</a></li>
+        <li><a href="#sources">Sources</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<!-- ============================= HERO ============================= -->
+<!-- IMAGE: hero — IMG_7280.jpg, the Castle Hills Historical Society exhibit (wide shot). Swap if a stronger lead image is preferred. -->
+<section class="hero" id="top" aria-label="Introduction">
+  <div class="hero-img" style="background-image:url('images/IMG_7280.jpg');" role="img" aria-label="Trifold display boards of the Castle Hills Historical Society exhibit, with newspaper clippings, photographs and artifacts."></div>
+  <div class="hero-content">
+    <p class="label">The Castle Hills Historical Society&nbsp;·&nbsp;75 Years of Community</p>
+    <h1>Castle&nbsp;Hills</h1>
+    <p class="sub">A small Texas city that chose to govern itself — and kept the stories to prove it.</p>
+    <p class="meta">Incorporated July 3, 1951&nbsp;&nbsp;—&nbsp;&nbsp;2026</p>
+  </div>
+  <div class="scrollcue" aria-hidden="true">Scroll</div>
+</section>
+
+<!-- ============================= THE STORY ============================= -->
+<main id="main">
+<section id="story" class="story">
+  <div class="container read">
+    <p class="label reveal">The Story</p>
+    <p class="lead reveal">Castle Hills is an independent city ringed by San Antonio, Texas. It was incorporated on July 3, 1951, after its residents — who had been meeting since 1950 as the Castle Hills Improvement League — decided they would rather provide their own fire protection, police, water, and streets than be annexed by the growing city next door.</p>
+    <p class="reveal">This page is an online companion to the Castle Hills Historical Society's 75th-anniversary exhibit. Everything here — the dates, the names, the quotes, the captions — comes from the exhibit's own panels and from the newspaper clippings displayed alongside them. It is a portrait of a community told largely in the words it chose for itself.</p>
+    <blockquote class="pullquote reveal">
+      “There are no groundbreaking ceremonies planned. Castle Hills can't afford a silver spade.”
+      <cite>— Chester Slimp, acting secretary of Castle Hills, on beginning construction of the first City Hall, 1955</cite>
+    </blockquote>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ============================= TIMELINE ============================= -->
+<section id="timeline">
+  <div class="container">
+    <div class="section-head reveal">
+      <p class="label">The Spine of the Story</p>
+      <h2>A Timeline</h2>
+      <p class="intro read">Dated milestones from the exhibit boards and the clippings shown with them — woven together with a few independently verified records (marked <em>✓ verified</em>).</p>
+    </div>
+
+    <div class="timeline">
+      <!-- IMAGE: IMG_7345.jpg — historical Map of Bexar County -->
+      <div class="node r reveal">
+        <span class="yr">1856</span>
+        <h3>Before the city, the surveyors</h3>
+        <p>Handwritten field notes survey 165½ acres of this land — Survey No. 367, made for James G. Brien. Maps and family parcels (Prinz, Slimp, and others) would shape the streets to come.</p>
+        <figure><img loading="lazy" src="images/IMG_7345.jpg" alt="An aged printed Map of Bexar County showing surveyed land parcels and roads radiating from a central point." /></figure>
+      </div>
+
+      <!-- IMAGE: IMG_7333.jpg — 1923 newspaper feature on the new Slimp home -->
+      <div class="node l reveal">
+        <span class="yr">1921 – 1923</span>
+        <h3>The Castle on the hill</h3>
+        <p>Chester and Helen Slimp buy 35.5 acres on Lockhill-Selma Road for $3,500. Their rock house, designed by architect Ralph Cameron, becomes the landmark that gives Castle Hills its name.</p>
+        <figure><img loading="lazy" src="images/IMG_7333.jpg" alt="A 1923 newspaper feature with engravings of the new Slimp country home, its living room, and a staircase." /></figure>
+      </div>
+
+      <!-- IMAGE: IMG_7309.jpg — 1951 incorporation sample ballot & poll list -->
+      <div class="node r reveal">
+        <span class="yr">1951</span>
+        <h3>A city is born</h3>
+        <p>Residents vote to incorporate. The City of Castle Hills becomes official in 1951 — a Texas <strong>General Law Type A</strong> city, governed by a mayor and five aldermen, with Leonard Yeckel as its first mayor. <em>✓ verified: TML / TSHA.</em></p>
+        <figure><img loading="lazy" src="images/IMG_7309.jpg" alt="A framed 1951 sample ballot and poll list for the incorporation election of the Town of Castle Hills." /></figure>
+      </div>
+
+      <!-- IMAGE: IMG_7285.jpg — 1956 bookmaking raid clipping at 6701 West Ave. -->
+      <div class="node l reveal">
+        <span class="yr">1956</span>
+        <h3>The casino on West Avenue</h3>
+        <p>Ten officers raid a “swank” bookmaking house at 6701 West Avenue, owned by Tom Moore — the home whose high-stakes poker games would echo all the way to Reno.</p>
+        <figure><img loading="lazy" src="images/IMG_7285.jpg" alt="A 1956 San Antonio Express clipping headlined 'One Nabbed In Bookie Raid Here,' about a raid at 6701 West Avenue, Castle Hills." /></figure>
+      </div>
+
+      <!-- IMAGE: IMG_7296.jpg — Dibble case clipping -->
+      <div class="node r reveal">
+        <span class="yr">1961 – 1962</span>
+        <h3>The Dibble case</h3>
+        <p>A prominent resident shoots his wife, Sabina Dibble, at their home on Dogwood. A jury finds him insane and commits him to Rusk State Hospital.</p>
+        <figure><img loading="lazy" src="images/IMG_7296.jpg" alt="A newspaper clipping headlined 'Castle Hills Shot Fatal' with a 1957 garden photograph of Mrs. Sabina Dibble." /></figure>
+      </div>
+
+      <!-- IMAGE: IMG_7348.jpg — annotated aerial map of the built-out enclave (verified-record node) -->
+      <div class="node l reveal">
+        <span class="yr">1970</span>
+        <h3>The city reaches its peak</h3>
+        <p>The U.S. Census counts <strong>5,311</strong> residents — Castle Hills' high-water mark. Built out and ringed by San Antonio with nowhere to expand, the population has eased gently downward in every census since. <em>✓ verified: U.S. Census / Texas Almanac.</em></p>
+        <figure><img loading="lazy" src="images/IMG_7348.jpg" alt="An annotated aerial map of the built-out Castle Hills enclave marking early landowner family parcels." /></figure>
+      </div>
+
+      <!-- IMAGE: IMG_7292.jpg — 1972 King Arthur's Court bombing -->
+      <div class="node r reveal">
+        <span class="yr">1972</span>
+        <h3>The bombing of King Arthur's Court</h3>
+        <p>A pre-dawn blast tears through the King Arthur's Court night club on Jackson-Keller Road, waking the North Side. The FBI investigates a possible extortion plot.</p>
+        <figure><img loading="lazy" src="images/IMG_7292.jpg" alt="A 1972 newspaper clipping about a bombing at King Arthur's Court night club, with a photo of rubble and debris." /></figure>
+      </div>
+
+      <!-- IMAGE: IMG_7320.jpg — Hansen Quadruplets -->
+      <div class="node l reveal">
+        <span class="yr">1974</span>
+        <h3>Four at once — and an unsolved party</h3>
+        <p>The Hansen Quadruplets — Allison, Brooke, Claire, and Darcy — are born and become San Antonio's babies. The same season, an aircraft executive is bludgeoned to death at a New Year's Eve party; the case is never solved.</p>
+        <figure><img loading="lazy" src="images/IMG_7320.jpg" alt="An exhibit board about the Hansen Quadruplets, with a black-and-white photo of four newborn babies side by side." /></figure>
+      </div>
+
+      <!-- IMAGE: IMG_7284.jpg — West Ave. casino poker chips -->
+      <div class="node r reveal">
+        <span class="yr">The poker legacy</span>
+        <h3>From West Avenue to the World Series</h3>
+        <p>Tom Moore — later called a “Founding Father” of the World Series of Poker — left Castle Hills for Reno. Decades on, 85-year-old resident Gerald Silber cashed in a record-field WSOP Seniors event.</p>
+        <figure><img loading="lazy" src="images/IMG_7284.jpg" alt="An exhibit panel titled 'West Ave. Casino Poker Chips' displaying vintage chips bearing a monogram." /></figure>
+      </div>
+
+      <!-- IMAGE: IMG_7327.jpg — civic gathering (verified-record node) -->
+      <div class="node l reveal">
+        <span class="yr">2003</span>
+        <h3>The Commons of Castle Hills</h3>
+        <p>The council sets aside the Lemonwood land between City Hall and the fire station as a public common. The Commons is dedicated on <strong>July 4, 2003</strong> — the city's first Fourth of July celebration. <em>✓ verified: city records.</em></p>
+        <figure><img loading="lazy" src="images/IMG_7327.jpg" alt="A Castle Hills community gathering on the grass at a civic event, with residents beside a small tree." /></figure>
+      </div>
+
+      <!-- IMAGE: IMG_7339.jpg — 75 Years commemorative pins -->
+      <div class="node r reveal">
+        <span class="yr">2026</span>
+        <h3>Seventy-five years of community</h3>
+        <p>Castle Hills marks its diamond anniversary — “1951–2026, 75 Years of Community” — with the exhibit this page is drawn from.</p>
+        <figure><img loading="lazy" src="images/IMG_7339.jpg" alt="Eight commemorative enamel pins reading '1951–2026, 75 Years of Community.'" /></figure>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================= CH 1 — THE CASTLE ============================= -->
+<section id="castle" class="alt">
+  <div class="container">
+    <div class="section-head reveal">
+      <p class="label">Chapter One</p>
+      <h2>The Castle on the Hill</h2>
+      <p class="intro read">A family, a rock house, and the artist who chose the spot for its bluebonnets.</p>
+    </div>
+
+    <div class="chapter reveal">
+      <div class="media">
+        <!-- IMAGE: IMG_7332.jpg — the Slimp "Castle" exterior / grounds -->
+        <figure class="framed">
+          <img loading="lazy" src="images/IMG_7332.jpg" alt="A stone, Spanish-style two-story house with arched windows among trees — the Slimp family 'Castle' — and views of its mosaic-tiled patio and garden." />
+          <figcaption>The Slimp “Castle” and its grounds. The home was built of rock from Olmos Creek, found near Apple Park. (Exhibit board, “The Art of Living in Castle Hills.”)</figcaption>
+        </figure>
+      </div>
+      <div class="body">
+        <p class="label">Chester &amp; Helen Slimp</p>
+        <h3>“Bluebonnets for blueprints, that's how I got this house.”</h3>
+        <p>In 1921, Mr. &amp; Mrs. Chester Slimp purchased 35.5 acres of land on Lockhill-Selma Road for $3,500. Their home, said the exhibit, “sits on a hill, and at the time it was built there was nothing around the home but some trees and brush. It was a landmark in the area.”</p>
+        <p>The architect was Ralph Cameron — known in Texas for the Medical Arts Building (now The Emily Morgan Hotel), the main Post Office near the Alamo, and Grace Lutheran Church. The builder was Charlie Bryant. The same house, the family noted, can be found in Terrell Hills.</p>
+        <p class="note">Chester A. Slimp Sr. was born in Chattanooga, Tennessee in 1889, an oil distributor who was deeply involved in the YMCA and Baptist Temple Sunday School. He helped extend West Avenue to Lockhill-Selma in 1929 — the reason West Avenue still has its “dog leg” turn — and lived in his Castle until he died, age 75, in 1965.</p>
+        <p class="vcaveat"><span class="vtag account">per the city's account</span>That the city took its name from this hilltop “Castle” is the Historical Society's and the city's own account; independent research found no deed or directory to corroborate it, so it is preserved here as local tradition.</p>
+        <!-- TODO: source conflict on Slimp dates — exhibit states land purchased 1921 (board "Art of Living"), home featured in an April 8, 1923 newspaper, yet a separate panel says Mr. Slimp "moved to Castle Hills in 1931." Presented here as the exhibit states each; confirm intended date. -->
+      </div>
+    </div>
+
+    <div class="chapter flip reveal">
+      <div class="media">
+        <div class="stack stack-2">
+          <!-- IMAGE: IMG_7336.jpg — portrait of Helen Ferne Goolsby Slimp -->
+          <figure class="framed">
+            <img loading="lazy" src="images/IMG_7336.jpg" alt="A sepia-toned formal portrait of a young woman in an Edwardian white lace dress with an upswept hairstyle — Helen Ferne Goolsby Slimp." />
+          </figure>
+          <!-- IMAGE: IMG_7337.jpg — Helen Slimp stained-glass work -->
+          <figure class="framed">
+            <img loading="lazy" src="images/IMG_7337.jpg" alt="A stained-glass window depicting a robed figure as the Good Shepherd among sheep — one of Helen Slimp's glass designs." />
+          </figure>
+        </div>
+        <figcaption>Left: Helen Ferne Goolsby Slimp. Right: a stained-glass design attributed to her on the exhibit (Center Point Methodist Church, 1919).</figcaption>
+      </div>
+      <div class="body">
+        <p class="label">Helen Ferne Goolsby Slimp</p>
+        <h3>The artist who came to Texas to meet a cowboy</h3>
+        <p>Born in Virginia in 1890, Helen came to Texas at nineteen “hoping to meet a cowboy.” She wasn't impressed with the cowboys — but she met Chester Slimp, and married him in 1913. She would live to be 105.</p>
+        <p>She worked as a stained-glass designer, with commissions for the Hermann Sons Lodge and area churches, and never stopped making art — glass, lithography, painting, pastels. It was her art, the exhibit says, that drew the family to the country on Lockhill-Selma, where she could paint while her children played.</p>
+        <p>She was a friend of Marion Koogler McNay and of Mount Rushmore sculptor Gutzon Borglum, and she taught art — her most famous student was the painter Porfirio Salinas.</p>
+        <!-- TODO: the sculptor's name is printed "Gutzam Borglum" on the exhibit board; rendered here as the widely-attested "Gutzon Borglum." Confirm preferred spelling. -->
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================= CH 2 — FOUNDING ============================= -->
+<section id="founding">
+  <div class="container">
+    <div class="section-head reveal">
+      <p class="label">Chapter Two</p>
+      <h2>Birth of a City</h2>
+      <p class="intro read">In the first mayor's own words — and with no tax dollars to spend.</p>
+    </div>
+
+    <div class="chapter reveal">
+      <div class="media">
+        <!-- IMAGE: IMG_7344.jpg — first mayor Leonard Yeckel family photo + "Family Affair" clipping -->
+        <figure class="framed">
+          <img loading="lazy" src="images/IMG_7344.jpg" alt="A bordered black-and-white photograph of a man in a light suit on a lawn with two children and a 1950s car, beside a 'Family Affair' newspaper caption." />
+          <figcaption>First Mayor Leonard Yeckel with his family. A “Family Affair” clipping notes that alderman A. L. Dolch was Yeckel's father-in-law — both worked at Alamo Iron Works.</figcaption>
+        </figure>
+      </div>
+      <div class="body">
+        <p class="label">Leonard Yeckel, First Mayor</p>
+        <h3>“We should take steps to incorporate our area”</h3>
+        <p>In 1950 the residents formed the Castle Hills Improvement League, meeting in the auditorium of the new Castle Hills Elementary School to talk over fire and police protection, water, and garbage — even as San Antonio was annexing large areas “without the facilities to furnish these services.”</p>
+        <p>They hired attorney Ralph Brite, used existing streets and the railroad track as boundaries, and won state approval. When San Antonio declared the incorporation void “by some technicalities” and moved to annex the new city, Brite fought back — and “the City of Castle Hills became a reality” on July 3, 1951. Independent records confirm the <strong>1951</strong> incorporation and the city's <strong>General Law Type A</strong> form — a mayor and five aldermen <span class="vtag">✓ verified</span> — though no public record beyond the city's own account fixes the exact day. <span class="vtag account">day: city's account</span></p>
+        <p class="note">In the first year there were no tax funds at all. Yeckel later recalled that $20 was solicited from each house, a volunteer fire department served the city, and “most households contributed.”</p>
+        <div class="roster">
+          <b>First Mayor</b> &nbsp;Leonard Yeckel (one-year term)<br />
+          <b>First City Council</b> &nbsp;Adolph Dolch · Jimmy Hanning · Jim Sierdevan · Harold Grist · Leslie “Lassie” Dunn<br />
+          <b>First Full-Term Mayor</b> &nbsp;Perry Burnham
+          <div class="vcaveat"><span class="vtag account">per the city's account</span>The founding roster appears only on the city's own history page; the surname “Sierdevan” could not be corroborated in any independent record, so treat its spelling as provisional.</div>
+        </div>
+        <!-- TODO: mayoral sequence — Yeckel served a one-year term (1951); E. W. "Ed" Horton signed city ordinances as Mayor in 1952; Perry Burnham is named "first full-term Mayor." The exhibit does not fully reconcile the order. Stated here as printed. -->
+      </div>
+    </div>
+
+    <div class="chapter flip reveal">
+      <div class="media">
+        <!-- IMAGE: IMG_7350.jpg — "Most Likely Reasons for Founding Castle Hills" board -->
+        <figure class="framed">
+          <img loading="lazy" src="images/IMG_7350.jpg" alt="A trifold exhibit board listing the most likely reasons for founding Castle Hills, surrounded by black-and-white photographs of early residents, houses and undeveloped land." />
+          <figcaption>The exhibit's list of founding motives, framed by photographs of the city's earliest days.</figcaption>
+        </figure>
+      </div>
+      <div class="body">
+        <p class="label">Why a city at all?</p>
+        <h3>Six reasons, one independent streak</h3>
+        <p>The Historical Society lists the most likely reasons the founders chose self-government rather than absorption into San Antonio:</p>
+        <p class="note">
+          • Preserve country, small-town community living<br />
+          • Provide for police protection<br />
+          • Provide for fire protection<br />
+          • Control post-WWII land development<br />
+          • Provide for streets and drainage maintenance<br />
+          • Fight annexation by San Antonio
+        </p>
+        <p>Or, as the city's own framing puts it: a place “created by independent thinking, hardworking men and women who saw a need to come together and make Castle Hills a premier community.”</p>
+        <p class="vcaveat"><span class="vtag account">per the city's account</span>Resisting annexation is the widely-held explanation, and Yeckel's own account supports it — but independent research turned up no primary or scholarly source that fixes the legal motive, so it stands as the community's well-supported tradition rather than a documented fact.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================= CH 3 — BUSINESS & NIGHTLIFE ============================= -->
+<section id="business" class="alt">
+  <div class="container">
+    <div class="section-head reveal">
+      <p class="label">Chapter Three</p>
+      <h2>Business &amp; Nightlife</h2>
+      <p class="intro read">“General stores and western wear gave way to groceries and night clubs.”</p>
+    </div>
+
+    <div class="chapter reveal">
+      <div class="media">
+        <!-- IMAGE: IMG_7313.jpg — "Past Businesses" board -->
+        <figure class="framed">
+          <img loading="lazy" src="images/IMG_7313.jpg" alt="A 'Past Businesses' exhibit board with the Piggly Wiggly pig logo, a photo of a man beside a 'one million stamps' display, and assorted store advertisements." />
+          <figcaption>“Past Businesses.” Piggly Wiggly arrived in 1957; the Lutheran Day School opened at 6908 West Avenue in 1964.</figcaption>
+        </figure>
+      </div>
+      <div class="body">
+        <p class="label">A changing main street</p>
+        <h3>From the country store to the supermarket</h3>
+        <p>“As residents moved to Castle Hills, businesses followed,” the exhibit explains. “As our city became more cosmopolitan, new stores replaced the old ones. General stores and western wear gave way to groceries and night clubs, who in turn were replaced by supermarkets and sophisticated restaurants.”</p>
+        <p>The boards catalog them block by block along NW Military Highway and West Avenue — Piggly Wiggly and Winn's, Cloth World and Harry's Western Wear, Country Junction, the Royal Pharmacy, and a long line of restaurants from La Scala to Double Dave's Pizzaworks.</p>
+      </div>
+    </div>
+
+    <div class="chapter flip reveal">
+      <div class="media">
+        <div class="stack stack-2">
+          <!-- IMAGE: IMG_7315.jpg — Castle Hills Town Club / Sadie Hawkins dances -->
+          <figure class="framed">
+            <img loading="lazy" src="images/IMG_7315.jpg" alt="An exhibit board on the Castle Hills Town Club, with a crowded patio dance photograph and a drum reading 'Melody Buccaneers.'" />
+          </figure>
+          <!-- IMAGE: IMG_7316.jpg — Alfredo's presents Willie Nelson -->
+          <figure class="framed">
+            <img loading="lazy" src="images/IMG_7316.jpg" alt="An exhibit board featuring an advertisement, 'Alfredo's Presents Willie Nelson,' and a photo of a man in a white cowboy hat playing guitar." />
+          </figure>
+        </div>
+        <figcaption>Left: the Castle Hills Town Club and its Sadie Hawkins dances (1955–1963). Right: Alfredo's — once Bric's Club at 1810 NW Military — presented Willie Nelson.</figcaption>
+      </div>
+      <div class="body">
+        <p class="label">After dark</p>
+        <h3>Dancing on the terrace</h3>
+        <p>At the corner of West Avenue and Jackson-Keller Road, the Castle Hills Town Club offered the Ed Massey Combo “for your dancing pleasure on the terrace” — mambos, rhumbas, tangos, fox trots, and waltzes — plus the popular Sadie Hawkins dances. In 1957 the club redecorated with “an aquarium for tropical fish and fish netting on walls and ceiling.”</p>
+        <p>Down the road, builder Doug Saunders bought Bric's Club, gave it a face-lift, renamed it Alfredo's, and began “importing some first-rate acts” — including, in March, Willie Nelson.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================= CH 4 — PEOPLE ============================= -->
+<section id="people">
+  <div class="container">
+    <div class="section-head reveal">
+      <p class="label">Chapter Four</p>
+      <h2>Famous &amp; Infamous</h2>
+      <p class="intro read">“In the past 70 years, many people have called Castle Hills home.”</p>
+    </div>
+
+    <div class="chapter reveal">
+      <div class="media">
+        <!-- IMAGE: IMG_7319.jpg — Dee Howard aviation panel -->
+        <figure class="framed">
+          <img loading="lazy" src="images/IMG_7319.jpg" alt="An exhibit board on aviation pioneer Dee Howard, with photos of the Howard Aero Service building, a portrait, an aircraft, and luxury jet interiors." />
+          <figcaption>Aviation pioneer Dee Howard. Howard Aero had the first hangar at the new San Antonio International Airport; Howard held 38 patents.</figcaption>
+        </figure>
+      </div>
+      <div class="body">
+        <p class="label">Dee Howard, aviator</p>
+        <h3>Thirty-eight patents and a king's airplane</h3>
+        <p>Dee Howard built a full-scale mockup of the Learjet for Bill Lear, and his firm customized aircraft for His Excellency the King of Saudi Arabia and for Chiang Kai-Shek, former President of the Republic of China. At one time, the exhibit notes, Dee Howard was the second-largest employer in San Antonio.</p>
+        <div class="roster">
+          <b>Bill White</b> · raised on E. Castle Lane → Harvard, U.S. Deputy Energy Secretary under President Clinton, and Mayor of Houston<br />
+          <b>Robert Avalon</b> · Bill White's brother, a pianist and composer collected by Rice University<br />
+          <b>Orville Carr</b> · ASID Fellow and “the” designer for San Antonio; chosen to design the new airport terminal in 1961<br />
+          <b>Debora Daniels</b> · TV anchor on KMOL (WOAI) and KSAT, on air from the early '80s until 2004
+        </div>
+      </div>
+    </div>
+
+    <div class="chapter flip reveal">
+      <div class="media">
+        <div class="stack stack-2">
+          <!-- IMAGE: IMG_7322.jpg — Bill White & Robert Avalon -->
+          <figure class="framed">
+            <img loading="lazy" src="images/IMG_7322.jpg" alt="An exhibit board with a photo of Bill White speaking at microphones, a 'Bill White for Texas' campaign sign, and a painted portrait of his brother Robert Avalon at a piano." />
+          </figure>
+          <!-- IMAGE: IMG_7320.jpg — Hansen Quadruplets -->
+          <figure class="framed">
+            <img loading="lazy" src="images/IMG_7320.jpg" alt="An exhibit board about the Hansen Quadruplets, including a photo of four young women on a talk-show couch." />
+          </figure>
+        </div>
+        <figcaption>Left: Bill White, who grew up on E. Castle Lane, and his brother the composer Robert Avalon. Right: the Hansen Quadruplets, who appeared on The Tonight Show with Johnny Carson in 1990.</figcaption>
+      </div>
+      <div class="body">
+        <p class="label">Sons, daughters &amp; quadruplets</p>
+        <h3>Four girls and a Tonight Show couch</h3>
+        <p>Born in October 1974, the Hansen Quadruplets — Allison, Brooke, Claire, and Darcy — were “San Antonio's babies,” followed by the TV stations and newspapers for every birthday and milestone, and joined at home by older sisters Wendy and Holly. In August 1990 they guest-starred on The Tonight Show with Johnny Carson, and later attended Baylor University.</p>
+        <p class="note">Also among the “famous and infamous”: “Big John” McClintock, a friend of John Wayne who owned a steak house on Austin Highway and ran a short-lived night club called the Spook House; radio owner Jack Roth; and boxer Jessie James Leija.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================= CH 5 — VICE & CRIME ============================= -->
+<section id="vice" class="alt">
+  <div class="container">
+    <div class="section-head reveal">
+      <p class="label">Chapter Five</p>
+      <h2>Vice, Crime &amp; the World Series of Poker</h2>
+      <p class="intro read">The wide-open years — and the West Avenue card games that made history.</p>
+    </div>
+
+    <div class="chapter reveal">
+      <div class="media">
+        <!-- IMAGE: IMG_7281.jpg — "6701 West Avenue: Home of the World Series of Poker" panel -->
+        <figure class="framed">
+          <img loading="lazy" src="images/IMG_7281.jpg" alt="An exhibit panel headlined '6701 West Avenue: Home of the World Series of Poker,' explaining the Tom Moore casino story." />
+          <figcaption>The exhibit's central panel: “6701 West Avenue: Home of the World Series of Poker.”</figcaption>
+        </figure>
+      </div>
+      <div class="body">
+        <p class="label">6701 West Avenue</p>
+        <h3>The casino that moved to Reno</h3>
+        <p>“Tom Moore's home at 6701 West Avenue was, for many years, an illegal gambling casino that was ignored by law enforcement,” the exhibit recounts — “allegedly because the upper ranks and other important local officials were invited to play and never lost money.”</p>
+        <p>Eventually the games were raided. Moore abandoned his local efforts and bought a casino in Reno, where he invited the best Texas poker players from his Castle Hills home “to a tournament that became the World Series of Poker.” He would later be called one of the WSOP's “Founding Fathers.”</p>
+        <p class="note">A separate feature follows 85-year-old Castle Hills resident Gerald Silber, who cashed in a record-field WSOP Seniors Championship and first entered the WSOP Main Event in 2001 as a 70th-birthday gift — back, he said, “when tournament fields were more personable.”</p>
+      </div>
+    </div>
+
+    <div class="chapter flip reveal">
+      <div class="media">
+        <div class="stack stack-2">
+          <!-- IMAGE: IMG_7292.jpg — King Arthur's Court bombing -->
+          <figure class="framed">
+            <img loading="lazy" src="images/IMG_7292.jpg" alt="A 1972 newspaper clipping about the bombing at King Arthur's Court night club, with a photograph of rubble." />
+          </figure>
+          <!-- IMAGE: IMG_7296.jpg — Dibble case -->
+          <figure class="framed">
+            <img loading="lazy" src="images/IMG_7296.jpg" alt="A newspaper clipping headlined 'Castle Hills Shot Fatal' about the death of Mrs. Sabina Dibble." />
+          </figure>
+        </div>
+        <figcaption>Left: the 1972 King Arthur's Court bombing on Jackson-Keller Road. Right: the 1961 Dibble shooting on Dogwood.</figcaption>
+      </div>
+      <div class="body">
+        <p class="label">Bombings, bookies &amp; an unsolved party</p>
+        <h3>The cases that made the front page</h3>
+        <p>The boards gather the city's darker headlines: the long bookmaking saga of Jack P. Hanratty; the 1972 pre-dawn bombing of the King Arthur's Court night club, which the FBI tied to a possible extortion plot and to the unsolved killing of club figure Ruby Limon; and the 1961 shotgun death of Mrs. Sabina Dibble at 122 Dogwood, after which a jury found her husband insane.</p>
+        <p>And the one that was never solved: on New Year's Eve, 1973, aircraft executive Luther Dale Graham, 38, was bludgeoned with a pipe wrench at a party at 111 Briarcliff. “We are never going to close this case,” vowed investigating Sergeant Joe Rosales.</p>
+        <!-- TODO: the victim in the Dibble case is named both "Jack O. Dibble Jr." (1961 clipping) and "Orlando V. (Jack) Dibble" (1962 clipping). Both appear in the sources; left general here. Confirm preferred name if naming him directly. -->
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================= CH 6 — CIVIC LIFE ============================= -->
+<section id="civic">
+  <div class="container">
+    <div class="section-head reveal">
+      <p class="label">Chapter Six</p>
+      <h2>The Helpers</h2>
+      <p class="intro read">“Look for the helpers. You will always find people who are helping.”</p>
+    </div>
+
+    <div class="chapter reveal">
+      <div class="media">
+        <!-- IMAGE: IMG_7325.jpg — "Castle Hills Community Groups" board -->
+        <figure class="framed">
+          <img loading="lazy" src="images/IMG_7325.jpg" alt="A 'Castle Hills Community Groups' exhibit board with the city seal, a police badge, a fire-rescue patch, and a photo of people in hard hats and safety vests holding shovels." />
+          <figcaption>“Castle Hills Community Groups,” framed by the city seal (1951), the police badge, and the Fire Rescue patch.</figcaption>
+        </figure>
+      </div>
+      <div class="body">
+        <p class="label">A city of volunteers</p>
+        <h3>Starting with nothing but a strong desire</h3>
+        <p>The exhibit borrows Mister Rogers' line — “Look for the helpers” — and turns it on the city itself. The first fire department was built by a group of men who “started out with nothing but a strong desire,” raising money with barbecues until they could buy a truck. Every citizen, Yeckel wrote, was involved.</p>
+        <p>The Castle Hills Woman's Club, founded in 1952, worked to complete the civic center; the Garden Club, the Historical Society, the Homeowners' Association, and the Scouts followed. “We are thankful,” the board reads, “for all the helpers that have come before us and all those that continue to help.”</p>
+      </div>
+    </div>
+
+    <div class="chapter flip reveal">
+      <div class="media">
+        <div class="stack stack-2">
+          <!-- IMAGE: IMG_7326.jpg — police/fire history photos -->
+          <figure class="framed">
+            <img loading="lazy" src="images/IMG_7326.jpg" alt="An exhibit board of police and fire history photographs, including father-and-son officers and a mayor planting a palm tree at City Hall in 1957." />
+          </figure>
+          <!-- IMAGE: IMG_7330.jpg — Fiesta Castle Hills -->
+          <figure class="framed">
+            <img loading="lazy" src="images/IMG_7330.jpg" alt="An exhibit board for Fiesta Castle Hills, with festival photos, Fiesta medals, and community organization logos." />
+          </figure>
+        </div>
+        <figcaption>Left: police and fire history — including Mayor Ed Horton planting a palm tree at the new City Hall in 1957. Right: Fiesta Castle Hills and the civic groups that endure.</figcaption>
+      </div>
+      <div class="body">
+        <p class="label">Seventy-five years on</p>
+        <h3>A safe, friendly, and fun place</h3>
+        <p>From father-and-son police officers in 1955 to a $10,000 community Christmas tree raised by the Public Works crew, the exhibit traces the everyday institutions that kept the city running: National Night Out gatherings, garden-club tree plantings, and the annual Fiesta Castle Hills.</p>
+        <p>“Over the past 70 years,” the board concludes, “the City of Castle Hills has always had helpers.” In 2026 it celebrates seventy-five.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- =====================================================================
+     BEYOND THE EXHIBIT — THE VERIFIED RECORD
+     Sourced from independent web research (TSHA Handbook, City of Castle
+     Hills official site, U.S. Census / Texas Almanac, Texas Municipal League,
+     Bexar County Historical Commission), each claim adversarially verified.
+     Confidence labels: Confirmed (2+ strong sources) · Probable (1 strong
+     source) · Unverified (not located). Kept DISTINCT from the exhibit-
+     sourced narrative above. Full dataset: ./research/castle-hills-master-record.md
+     ===================================================================== -->
+<section id="record">
+  <div class="container">
+    <div class="section-head reveal">
+      <p class="label">Beyond the Exhibit</p>
+      <h2>The Verified Record</h2>
+      <p class="intro read">The story above is told in the exhibit's own words. This section steps outside it: facts independently researched across the Handbook of Texas, the city's records, the U.S. Census, and the Texas Municipal League — each cross-checked and labeled by how firmly it could be confirmed.</p>
+      <div class="legend" aria-hidden="false">
+        <span><span class="badge confirmed">Confirmed</span> two or more strong sources</span>
+        <span><span class="badge probable">Probable</span> one strong source</span>
+        <span><span class="badge unverified">Unverified</span> not documented online</span>
+      </div>
+    </div>
+
+    <div class="facts reveal">
+      <div class="fact">
+        <div class="k">Location &amp; Identity</div>
+        <div class="v">An <strong>enclave city</strong> in northern Bexar County, on Interstate Loop&nbsp;410 about nine miles north of downtown San Antonio and entirely surrounded by it. Area ≈ 2.5&nbsp;sq&nbsp;mi · ZIP&nbsp;78213 · FIPS&nbsp;48-13276 · GNIS&nbsp;1332298.</div>
+        <div class="src"><span class="badge confirmed">Confirmed</span></div>
+      </div>
+
+      <div class="fact">
+        <div class="k">Incorporation</div>
+        <div class="v">Incorporated in <strong>1951</strong>.</div>
+        <div class="note">The specific day “July 3, 1951” comes from the city's own founding account (and the exhibit) — but every retrievable municipal and state record gives only the year, so the exact date is not independently corroborated.</div>
+        <div class="src"><span class="badge confirmed">Confirmed</span> <span class="badge probable">Day: Probable</span></div>
+      </div>
+
+      <div class="fact">
+        <div class="k">Form of Government</div>
+        <div class="v">A Texas <strong>General Law Type A</strong> municipality — a mayor and five aldermen.</div>
+        <div class="src"><span class="badge confirmed">Confirmed</span></div>
+      </div>
+
+      <div class="fact">
+        <div class="k">First Government, 1951</div>
+        <div class="v">Mayor <strong>Leonard Yeckel</strong> with aldermen <strong>Adolph Dolch, Leslie Dunn, Harold Grist, Jimmy Hanning,</strong> and <strong>Jim Sierdevan.</strong></div>
+        <div class="note">Rests on a single primary source (the city history page); the surname “Sierdevan” could not be verified anywhere else and may be a transcription variant.</div>
+        <div class="src"><span class="badge probable">Probable</span></div>
+      </div>
+
+      <div class="fact">
+        <div class="k">City Hall</div>
+        <div class="v">Today at <strong>209 Lemonwood Drive</strong>. The original City Hall was reportedly “the City Garage,” at West Avenue &amp; Northwest Military Highway.</div>
+        <div class="src"><span class="badge confirmed">Present: Confirmed</span> <span class="badge probable">Origin: Probable</span></div>
+      </div>
+
+      <div class="fact">
+        <div class="k">Described Boundaries</div>
+        <div class="v">Jackson-Keller Road (south), Lockhill Selma Road (north), Blanco Road (east), and the <strong>T&amp;NORR</strong> railroad tracks (west).</div>
+        <div class="note">Stated only on the city's own site; not independently corroborated.</div>
+        <div class="src"><span class="badge probable">Probable</span></div>
+      </div>
+
+      <div class="fact">
+        <div class="k">The Commons of Castle Hills</div>
+        <div class="v">In June 2003 the council designated the Lemonwood land a common area; <strong>“The Commons”</strong> was dedicated <strong>July 4, 2003</strong>, alongside the city's first Fourth of July Celebration.</div>
+        <div class="src"><span class="badge confirmed">Confirmed</span></div>
+      </div>
+
+      <div class="fact">
+        <div class="k">State Historical Marker</div>
+        <div class="v"><strong>None</strong> within Castle Hills, per the 2013 Bexar County Historical Commission marker guide (which lists zero markers in the enclave).</div>
+        <div class="note">Based on the county guide as a proxy; worth a final check against the THC Historic Sites Atlas.</div>
+        <div class="src"><span class="badge probable">Probable</span></div>
+      </div>
+    </div>
+
+    <!-- Population by census year — pure-CSS bar chart. Heights are % of the 1970 peak (5,311). -->
+    <div class="pop reveal" style="margin-top:64px;">
+      <p class="label">Population by Census Year</p>
+      <h3 style="margin:8px 0 6px;">A peak in 1970, then a long, gentle decline</h3>
+      <p class="intro read" style="margin-bottom:26px;">U.S. Census counts. Castle Hills more than doubled in the 1960s, crested at 5,311 in 1970, and has eased downward ever since — the trajectory of a fully built-out enclave with no room to expand.</p>
+      <div class="bars" role="img" aria-label="Bar chart of Castle Hills U.S. Census population: 1960 was 2,622; 1970 was 5,311 (peak); 1980 was 4,773; 1990 was 4,198; 2000 was 4,202; 2010 was 4,116; 2020 was 3,978.">
+        <div class="bar"><span class="val">2,622</span><div class="col" style="height:49%"></div></div>
+        <div class="bar peak"><span class="val">5,311</span><div class="col" style="height:100%"></div></div>
+        <div class="bar"><span class="val">4,773</span><div class="col" style="height:90%"></div></div>
+        <div class="bar"><span class="val">4,198</span><div class="col" style="height:79%"></div></div>
+        <div class="bar"><span class="val">4,202</span><div class="col" style="height:79%"></div></div>
+        <div class="bar"><span class="val">4,116</span><div class="col" style="height:78%"></div></div>
+        <div class="bar"><span class="val">3,978</span><div class="col" style="height:75%"></div></div>
+      </div>
+      <div class="labels">
+        <span>1960</span><span>1970</span><span>1980</span><span>1990</span><span>2000</span><span>2010</span><span>2020</span>
+      </div>
+      <p class="cap">Sources: U.S. Decennial Census, via the Texas Almanac and the Handbook of Texas. The widely-repeated local figure of 5,278 for 1970 could not be corroborated; 5,311 is the value carried by every authoritative source. A 2021 estimate puts the city near 3,947.</p>
+    </div>
+
+    <div class="unconfirmed reveal">
+      <h3>What the research could <em>not</em> confirm</h3>
+      <p style="color:var(--muted);margin-bottom:14px;font-size:.96rem;">Honesty is part of the record. These remain open — most would need offline archives (the Bexar County Clerk's incorporation filing, Yeckel's <em>Birth of a City</em>, 1950s city directories, or the council-minutes archive) to settle:</p>
+      <ul>
+        <li><b>The exact incorporation date.</b> Only the year 1951 is documented in public records.</li>
+        <li><b>The reason for incorporating.</b> The common belief — resisting annexation by San Antonio — has no primary or scholarly source online.</li>
+        <li><b>The name's origin.</b> The Slimp-family hilltop-home account appears only in the city's own narrative; no deed or directory was found to corroborate it.</li>
+        <li><b>The full list of mayors.</b> Only the first (Leonard Yeckel) and the present mayor are documented online.</li>
+        <li><b>The deep past.</b> The 1920s settlement story, Olmos Creek, Indigenous occupation, and early utilities produced no verifiable online record.</li>
+      </ul>
+      <p style="color:var(--muted);margin:16px 0 0;font-size:.9rem;">The complete, fully-cited dataset — timeline, entity registry, demographics, source ledger, conflicts log, and an offline research action plan — is saved alongside this page at <code>research/castle-hills-master-record.md</code>.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============================= GALLERY ============================= -->
+<section id="gallery" class="alt">
+  <div class="container">
+    <div class="section-head reveal">
+      <p class="label">The Archive</p>
+      <h2>Photo Gallery</h2>
+      <p class="intro read">Boards, clippings, maps, and artifacts from the exhibit. Select any image to enlarge; use the arrow keys or swipe, and press Esc to close.</p>
+    </div>
+
+    <!--
+      Gallery items. data-full points to the image; data-cap is the lightbox caption.
+      Captions describe only what is visible or what the exhibit states. Add or remove
+      <figure> items freely — the lightbox script picks them up automatically.
+    -->
+    <div class="grid" id="gallery-grid">
+      <figure data-cap="The Castle Hills Historical Society's 75th-anniversary exhibit (1951–2026).">
+        <img loading="lazy" src="images/IMG_7280.jpg" alt="Wide view of the Castle Hills Historical Society exhibit trifold boards." />
+        <figcaption>The exhibit, as displayed</figcaption>
+      </figure>
+      <figure data-cap="An aged printed Map of Bexar County showing surveyed parcels and roads radiating from San Antonio.">
+        <img loading="lazy" src="images/IMG_7345.jpg" alt="Historical Map of Bexar County." />
+        <figcaption>Map of Bexar County</figcaption>
+      </figure>
+      <figure data-cap="An annotated aerial photograph marking early landowner families — including the Slimp (1923), Prinz (1912–1950s) families — and the Castle Hills subdivision.">
+        <img loading="lazy" src="images/IMG_7348.jpg" alt="Annotated aerial map of the Castle Hills area showing early family parcels." />
+        <figcaption>Who owned the land</figcaption>
+      </figure>
+      <figure data-cap="A photocopied subdivision plat of Castle Hills, surveyed by L. E. Felton, showing numbered blocks and lots.">
+        <img loading="lazy" src="images/IMG_7349.jpg" alt="Subdivision plat map of Castle Hills." />
+        <figcaption>The subdivision plat</figcaption>
+      </figure>
+      <figure data-cap="A framed 1951 sample ballot and poll list for the election to incorporate the Town of Castle Hills, held June 16, 1951.">
+        <img loading="lazy" src="images/IMG_7309.jpg" alt="Framed 1951 incorporation sample ballot and poll list." />
+        <figcaption>The incorporation ballot, 1951</figcaption>
+      </figure>
+      <figure data-cap="A surveyor's level engraved 'City of Castle Hills,' shown in its wooden carrying case with early instruments and tools.">
+        <img loading="lazy" src="images/IMG_7310.jpg" alt="A surveyor's level marked City of Castle Hills." />
+        <figcaption>The city's surveyor's level</figcaption>
+      </figure>
+      <figure data-cap="The Slimp 'Castle' and grounds — a stone, Spanish-style house with mosaic-tiled patios and gardens.">
+        <img loading="lazy" src="images/IMG_7332.jpg" alt="The Slimp Castle house and grounds." />
+        <figcaption>The Castle on the hill</figcaption>
+      </figure>
+      <figure data-cap="A 1923 newspaper feature with engravings of the new Slimp country home at West Avenue and Lockhill-Selma Road.">
+        <img loading="lazy" src="images/IMG_7333.jpg" alt="1923 newspaper feature on the Slimp home." />
+        <figcaption>“Unusually attractive,” 1923</figcaption>
+      </figure>
+      <figure data-cap="A sepia portrait of Helen Ferne Goolsby Slimp, stained-glass artist, who lived to 105.">
+        <img loading="lazy" src="images/IMG_7336.jpg" alt="Portrait of Helen Ferne Goolsby Slimp." />
+        <figcaption>Helen Slimp</figcaption>
+      </figure>
+      <figure data-cap="Stained-glass works attributed to Helen Slimp on the exhibit, including the Good Shepherd and Hermann the Cherusker (Hermann Sons Lodge, 1921).">
+        <img loading="lazy" src="images/IMG_7337.jpg" alt="Stained-glass windows by Helen Slimp." />
+        <figcaption>Her glass designs</figcaption>
+      </figure>
+      <figure data-cap="A 1939 San Antonio Light clipping: Chester Slimp hands over cash to help save the Y.M.C.A. building, alongside a photo of the early City Hall.">
+        <img loading="lazy" src="images/IMG_7334.jpg" alt="Clippings about Chester Slimp's civic work and the early City Hall." />
+        <figcaption>Chester Slimp, civic man</figcaption>
+      </figure>
+      <figure data-cap="The exhibit's list of the most likely reasons for founding Castle Hills, framed by early photographs.">
+        <img loading="lazy" src="images/IMG_7350.jpg" alt="Founding-reasons board with early photographs." />
+        <figcaption>Why a city was founded</figcaption>
+      </figure>
+      <figure data-cap="First Mayor Leonard Yeckel with his family, and the 'Family Affair' clipping noting his father-in-law, alderman A. L. Dolch.">
+        <img loading="lazy" src="images/IMG_7344.jpg" alt="Leonard Yeckel family photograph." />
+        <figcaption>The first mayor's family</figcaption>
+      </figure>
+      <figure data-cap="A 'Past Businesses' board: Piggly Wiggly, the 'one million stamps' promotion, and assorted store advertisements.">
+        <img loading="lazy" src="images/IMG_7313.jpg" alt="Past Businesses exhibit board." />
+        <figcaption>Past businesses</figcaption>
+      </figure>
+      <figure data-cap="The Castle Hills Town Club board — Sadie Hawkins dances and the Melody Buccaneers, at West Avenue and Jackson-Keller Road.">
+        <img loading="lazy" src="images/IMG_7315.jpg" alt="Castle Hills Town Club board." />
+        <figcaption>The Town Club</figcaption>
+      </figure>
+      <figure data-cap="'Alfredo's Presents Willie Nelson' — the former Bric's Club at 1810 NW Military Highway.">
+        <img loading="lazy" src="images/IMG_7316.jpg" alt="Alfredo's presents Willie Nelson advertisement board." />
+        <figcaption>Willie Nelson at Alfredo's</figcaption>
+      </figure>
+      <figure data-cap="The aviation panel for Dee Howard: Howard Aero Service, a portrait, an aircraft, and luxury jet interiors.">
+        <img loading="lazy" src="images/IMG_7319.jpg" alt="Dee Howard aviation board." />
+        <figcaption>Dee Howard, aviator</figcaption>
+      </figure>
+      <figure data-cap="Bill White speaking, a 'Bill White for Texas' sign, and a painted portrait of his brother, composer Robert Avalon, at a piano.">
+        <img loading="lazy" src="images/IMG_7322.jpg" alt="Bill White and Robert Avalon board." />
+        <figcaption>Bill White &amp; Robert Avalon</figcaption>
+      </figure>
+      <figure data-cap="The Hansen Quadruplets — Allison, Brooke, Claire, and Darcy — born October 1974, shown on a talk-show couch.">
+        <img loading="lazy" src="images/IMG_7320.jpg" alt="Hansen Quadruplets board." />
+        <figcaption>The Hansen Quadruplets</figcaption>
+      </figure>
+      <figure data-cap="The 'Famous and Infamous' board, including interior designer Orville Carr and anchorwoman Debora Daniels.">
+        <img loading="lazy" src="images/IMG_7317.jpg" alt="Famous and Infamous residents board." />
+        <figcaption>Famous &amp; infamous</figcaption>
+      </figure>
+      <figure data-cap="The 'West Ave. Casino Poker Chips' panel — vintage chips bearing a monogram from Tom Moore's games.">
+        <img loading="lazy" src="images/IMG_7284.jpg" alt="West Avenue casino poker chips panel." />
+        <figcaption>The casino's poker chips</figcaption>
+      </figure>
+      <figure data-cap="A 1956 San Antonio Express clipping: 'One Nabbed In Bookie Raid Here' — a raid at 6701 West Avenue, Castle Hills.">
+        <img loading="lazy" src="images/IMG_7285.jpg" alt="1956 bookie raid clipping." />
+        <figcaption>The 1956 raid</figcaption>
+      </figure>
+      <figure data-cap="The central exhibit panel: '6701 West Avenue: Home of the World Series of Poker.'">
+        <img loading="lazy" src="images/IMG_7281.jpg" alt="6701 West Avenue World Series of Poker panel." />
+        <figcaption>Home of the World Series of Poker</figcaption>
+      </figure>
+      <figure data-cap="A 1972 clipping on the bombing of the King Arthur's Court night club on Jackson-Keller Road, with a photo of rubble.">
+        <img loading="lazy" src="images/IMG_7292.jpg" alt="1972 King Arthur's Court bombing clipping." />
+        <figcaption>The 1972 bombing</figcaption>
+      </figure>
+      <figure data-cap="A clipping headlined 'Castle Hills Shot Fatal,' with a 1957 garden photograph of Mrs. Sabina Dibble.">
+        <img loading="lazy" src="images/IMG_7296.jpg" alt="Dibble case clipping." />
+        <figcaption>The Dibble case</figcaption>
+      </figure>
+      <figure data-cap="'Castle Hills Community Groups' — the city seal (1951), the police badge, the Fire Rescue patch, and a groundbreaking photo.">
+        <img loading="lazy" src="images/IMG_7325.jpg" alt="Castle Hills Community Groups board." />
+        <figcaption>The community groups</figcaption>
+      </figure>
+      <figure data-cap="Police and fire history photographs, including a 1957 palm-tree planting at the new City Hall and 1967 fire equipment.">
+        <img loading="lazy" src="images/IMG_7326.jpg" alt="Police and fire history board." />
+        <figcaption>Police &amp; fire history</figcaption>
+      </figure>
+      <figure data-cap="Fiesta Castle Hills — festival photographs, Fiesta medals, and the logos of the city's civic organizations.">
+        <img loading="lazy" src="images/IMG_7330.jpg" alt="Fiesta Castle Hills board." />
+        <figcaption>Fiesta Castle Hills</figcaption>
+      </figure>
+      <figure data-cap="Commemorative enamel pins: '1951–2026, 75 Years of Community.'">
+        <img loading="lazy" src="images/IMG_7339.jpg" alt="75 Years of Community commemorative pins." />
+        <figcaption>75 years of community</figcaption>
+      </figure>
+      <figure data-cap="Sugar cookies iced with 'CH' for Castle Hills, made for the anniversary.">
+        <img loading="lazy" src="images/IMG_7340.jpg" alt="Castle Hills anniversary cookies iced with CH." />
+        <figcaption>An anniversary treat</figcaption>
+      </figure>
+    </div>
+  </div>
+</section>
+
+<!-- ============================= SOURCES ============================= -->
+<section id="sources" class="sources">
+  <div class="container">
+    <div class="section-head reveal">
+      <p class="label">For the Record</p>
+      <h2>Sources &amp; Acknowledgments</h2>
+      <p class="intro read">The narrative of this page is built from the Castle Hills Historical Society's 75th-anniversary exhibit; the “Verified Record” section draws on the independent sources listed below it. The exhibit panels cite — and display — the following newspapers and materials. Dates shown are those printed in the clippings or noted by the Society.</p>
+    </div>
+    <ul>
+      <li><b>San Antonio Express</b> — incl. the 6701 West Avenue bookie raid (May 5, 1956); “Okay, Tote Guns” air-rifle item (May 15, 1959); ordinance notices (July 14, 1952); the King Arthur's Court bombing (Oct. 6, 1972).</li>
+      <li><b>San Antonio Express and News</b> — the Dibble sanity hearing (1962); the Hansen Quadruplets (1974); the Graham party-slaying series (Jan. 1974); the Hester / James White case (Dec. 1977).</li>
+      <li><b>The San Antonio Light</b> — “Gaming Raid Ruled Invalid” (May 23, 1970); the King Arthur's Court bombing (Oct. 5, 1972); “Brewer Due for Laurel,” on B. B. McGimsey (Dec. 2, 1951); the YMCA donor feature (1939).</li>
+      <li><b>San Antonio News / ExpressNews TV / Bexar Facts</b> — night-club and entertainment items, incl. Alfredo's and the Town Club (1964, 1970).</li>
+      <li><b>“Birth of a City”</b> — first-hand account by Leonard Yeckel, first Mayor of Castle Hills.</li>
+      <li><b>Castle Hills Historical Society exhibit panels</b> — “The Art of Living in Castle Hills,” “Past Businesses,” “Famous and Infamous,” “Castle Hills Community Groups,” “Most Likely Reasons for Founding Castle Hills,” and others.</li>
+      <li><b>Artifacts &amp; documents</b> — the 1951 incorporation sample ballot and poll list; an 1856 Bexar County survey (No. 367); the L. E. Felton subdivision plat; the “City of Castle Hills” surveyor's level; poker chips from the West Avenue games; and the “75 Years of Community” commemoratives.</li>
+    </ul>
+
+    <p class="label" style="margin-top:48px;">For “The Verified Record” section</p>
+    <p class="intro read" style="margin-top:8px;">Facts in the Verified Record were independently researched and cross-checked against these sources (accessed June 2026):</p>
+    <ul>
+      <li><b>Handbook of Texas Online (TSHA)</b> — <a href="https://www.tshaonline.org/handbook/entries/castle-hills-tx" target="_blank" rel="noopener">castle-hills-tx entry</a> — location, history, population series.</li>
+      <li><b>Texas Almanac (TSHA)</b> — <a href="https://www.texasalmanac.com/places/castle-hills" target="_blank" rel="noopener">places/castle-hills</a> — decennial population, area.</li>
+      <li><b>U.S. Census Bureau</b> — decennial counts 1960–2020 (via Census Reporter, geoid 16000US4813276).</li>
+      <li><b>Texas Municipal League directory</b> — <a href="https://directory.tml.org/profile/city/1387" target="_blank" rel="noopener">profile/city/1387</a> — incorporation year, “General Law Type A,” Bexar County, City Hall address.</li>
+      <li><b>City of Castle Hills</b> — official <a href="https://cityofcastlehills.com/2223/History-of-Castle-Hills" target="_blank" rel="noopener">History</a> and <a href="https://www.cityofcastlehills.com/2167/About-Castle-Hills" target="_blank" rel="noopener">About</a> pages — founding council, boundaries, the Commons.</li>
+      <li><b>Bexar County Historical Commission</b> — <a href="https://www.bexar.org/DocumentCenter/View/3914/Guide-to-Historical-Markers-of-Bexar-County" target="_blank" rel="noopener">2013 Guide to Historical Markers</a> — confirms no marker within Castle Hills.</li>
+      <li><b>USGS GNIS</b> (feature 1332298), <b>USPS/Census</b> identifiers, and <b>Wikipedia</b> (used only as a lead, with its citations verified in higher-tier sources).</li>
+    </ul>
+
+    <div class="ack reveal">
+      <p>With thanks to the <b>Castle Hills Historical Society</b>, whose research, panels, and collected materials are the sole basis for this page. The Society notes that its work continues: “We would like to complete the history of our city… If you have information to help the Society tell the rest of the story, or would like to help research our history, please join us.”</p>
+    </div>
+  </div>
+</section>
+</main>
+
+<!-- ============================= FOOTER ============================= -->
+<footer>
+  <div class="container foot-inner">
+    <span>Castle Hills, Texas&nbsp;·&nbsp;Incorporated July 3, 1951</span>
+    <span>An online companion to the Castle Hills Historical Society's 75th-anniversary exhibit</span>
+    <span><a href="#top">Back to top ↑</a></span>
+  </div>
+</footer>
+
+<!-- ============================= LIGHTBOX ============================= -->
+<div class="lb" id="lightbox" role="dialog" aria-modal="true" aria-label="Image viewer">
+  <button class="close" aria-label="Close (Esc)">×</button>
+  <button class="prev" aria-label="Previous image">‹</button>
+  <button class="next" aria-label="Next image">›</button>
+  <figure>
+    <img id="lb-img" src="" alt="" />
+    <figcaption id="lb-cap"></figcaption>
+  </figure>
+</div>
+
+<script>
+(function(){
+  "use strict";
+
+  /* ---------- Mobile nav toggle ---------- */
+  var toggle = document.querySelector('.nav-toggle');
+  var menu = document.getElementById('navmenu');
+  if (toggle && menu){
+    toggle.addEventListener('click', function(){
+      var open = menu.classList.toggle('show');
+      toggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+    });
+    menu.addEventListener('click', function(e){
+      if (e.target.tagName === 'A'){ menu.classList.remove('show'); toggle.setAttribute('aria-expanded','false'); }
+    });
+  }
+
+  /* ---------- Scroll-reveal (IntersectionObserver) ---------- */
+  var reveals = document.querySelectorAll('.reveal');
+  if ('IntersectionObserver' in window){
+    var ro = new IntersectionObserver(function(entries){
+      entries.forEach(function(en){
+        if (en.isIntersecting){ en.target.classList.add('in'); ro.unobserve(en.target); }
+      });
+    }, {threshold:0.12, rootMargin:'0px 0px -8% 0px'});
+    reveals.forEach(function(el){ ro.observe(el); });
+  } else {
+    reveals.forEach(function(el){ el.classList.add('in'); });
+  }
+
+  /* ---------- Active-section highlight in nav ---------- */
+  var navLinks = Array.prototype.slice.call(document.querySelectorAll('nav a'));
+  var sections = navLinks.map(function(a){ return document.querySelector(a.getAttribute('href')); }).filter(Boolean);
+  if ('IntersectionObserver' in window && sections.length){
+    var so = new IntersectionObserver(function(entries){
+      entries.forEach(function(en){
+        if (en.isIntersecting){
+          var id = en.target.id;
+          navLinks.forEach(function(a){
+            a.classList.toggle('active', a.getAttribute('href') === '#'+id);
+          });
+        }
+      });
+    }, {rootMargin:'-45% 0px -50% 0px', threshold:0});
+    sections.forEach(function(s){ so.observe(s); });
+  }
+
+  /* ---------- Lightbox gallery ---------- */
+  var figures = Array.prototype.slice.call(document.querySelectorAll('#gallery-grid figure'));
+  var lb = document.getElementById('lightbox');
+  var lbImg = document.getElementById('lb-img');
+  var lbCap = document.getElementById('lb-cap');
+  var btnClose = lb.querySelector('.close');
+  var btnPrev = lb.querySelector('.prev');
+  var btnNext = lb.querySelector('.next');
+  var current = -1;
+  var lastFocus = null;
+
+  function show(i){
+    if (i < 0) i = figures.length - 1;
+    if (i >= figures.length) i = 0;
+    current = i;
+    var fig = figures[i];
+    var img = fig.querySelector('img');
+    lbImg.src = img.getAttribute('src');
+    lbImg.alt = img.getAttribute('alt') || '';
+    lbCap.textContent = fig.getAttribute('data-cap') || '';
+  }
+  function open(i){
+    lastFocus = document.activeElement;
+    show(i);
+    lb.classList.add('open');
+    document.body.style.overflow = 'hidden';
+    btnClose.focus();
+  }
+  function close(){
+    lb.classList.remove('open');
+    document.body.style.overflow = '';
+    lbImg.src = '';
+    if (lastFocus && lastFocus.focus) lastFocus.focus();
+  }
+
+  figures.forEach(function(fig, i){
+    fig.setAttribute('tabindex','0');
+    fig.setAttribute('role','button');
+    fig.setAttribute('aria-label','Enlarge image: ' + (fig.getAttribute('data-cap')||''));
+    fig.addEventListener('click', function(){ open(i); });
+    fig.addEventListener('keydown', function(e){
+      if (e.key === 'Enter' || e.key === ' '){ e.preventDefault(); open(i); }
+    });
+  });
+
+  btnClose.addEventListener('click', close);
+  btnPrev.addEventListener('click', function(){ show(current - 1); });
+  btnNext.addEventListener('click', function(){ show(current + 1); });
+  lb.addEventListener('click', function(e){ if (e.target === lb) close(); }); /* click-outside */
+  document.addEventListener('keydown', function(e){
+    if (!lb.classList.contains('open')) return;
+    if (e.key === 'Escape') close();
+    else if (e.key === 'ArrowLeft') show(current - 1);
+    else if (e.key === 'ArrowRight') show(current + 1);
+  });
+
+  /* ---------- Touch swipe in lightbox ---------- */
+  var sx = 0;
+  lb.addEventListener('touchstart', function(e){ sx = e.changedTouches[0].clientX; }, {passive:true});
+  lb.addEventListener('touchend', function(e){
+    var dx = e.changedTouches[0].clientX - sx;
+    if (Math.abs(dx) > 50){ show(current + (dx < 0 ? 1 : -1)); }
+  }, {passive:true});
+
+})();
+</script>
+</body>
+</html>
