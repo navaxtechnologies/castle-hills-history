@@ -25,6 +25,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet" />
+<link rel="preload" as="image" href="images/IMG_7280.jpg" />
 
 <style>
   /* ---------- Design tokens (Archival Editorial) ---------- */
@@ -100,20 +101,28 @@
   nav a.active{color:var(--accent);background:var(--paper-2);}
   .nav-toggle{display:none;}
 
-  /* ---------- Hero ---------- */
-  .hero{position:relative;min-height:92vh;display:flex;align-items:flex-end;
+  /* ---------- Hero (museum wall-title treatment) ---------- */
+  .hero{position:relative;min-height:94vh;display:flex;align-items:flex-end;
     overflow:hidden;color:#F7F3EC;}
   .hero-img{position:absolute;inset:0;background-size:cover;background-position:center;
-    will-change:transform;animation:kenburns 28s ease-in-out infinite alternate;}
+    will-change:transform;animation:kenburns 28s ease-in-out infinite alternate;
+    filter:saturate(.55) contrast(1.06) brightness(.92);}
   @keyframes kenburns{from{transform:scale(1.06) translate3d(0,0,0);}to{transform:scale(1.16) translate3d(-1.5%,-1.5%,0);}}
-  .hero::after{content:"";position:absolute;inset:0;
-    background:linear-gradient(180deg,rgba(15,20,30,.30) 0%,rgba(15,20,30,.55) 55%,rgba(15,20,30,.86) 100%);}
-  .hero-content{position:relative;z-index:2;padding:0 24px 64px;max-width:var(--maxw);margin:0 auto;width:100%;}
+  /* duotone: navy multiply wash + deepening gradient */
+  .hero::before{content:"";position:absolute;inset:0;z-index:1;
+    background:#1E3A5F;mix-blend-mode:multiply;opacity:.52;}
+  .hero::after{content:"";position:absolute;inset:0;z-index:1;
+    background:linear-gradient(180deg,rgba(10,16,28,.22) 0%,rgba(10,16,28,.42) 52%,rgba(8,13,24,.88) 100%);}
+  .hero-content{position:relative;z-index:2;padding:0 24px 76px;max-width:var(--maxw);margin:0 auto;width:100%;}
   .hero .label{color:#cdd8e6;}
   .hero h1{font-family:var(--serif);font-weight:600;font-size:clamp(3rem,11vw,7.5rem);
-    line-height:.95;letter-spacing:-.02em;margin:.18em 0 .12em;text-shadow:0 2px 30px rgba(0,0,0,.35);}
+    line-height:.95;letter-spacing:-.02em;margin:.18em 0 .1em;text-shadow:0 2px 30px rgba(0,0,0,.35);}
+  .hero .years{font-family:var(--serif);font-weight:400;font-variant-numeric:oldstyle-nums;
+    font-size:clamp(1.5rem,4.6vw,3rem);letter-spacing:.06em;color:#d9e2ee;line-height:1;
+    margin:0 0 .35em;display:flex;align-items:center;gap:.45em;}
+  .hero .years::after{content:"";flex:0 0 clamp(48px,8vw,110px);height:1px;background:rgba(217,226,238,.55);}
   .hero .sub{font-family:var(--serif);font-style:italic;font-weight:400;
-    font-size:clamp(1.15rem,2.6vw,1.7rem);color:#eef2f7;max-width:30ch;text-shadow:0 1px 12px rgba(0,0,0,.4);}
+    font-size:clamp(1.15rem,2.6vw,1.7rem);color:#eef2f7;max-width:34ch;text-shadow:0 1px 12px rgba(0,0,0,.4);}
   .hero .meta{margin-top:22px;font-family:var(--mono);font-size:.74rem;letter-spacing:.16em;
     text-transform:uppercase;color:#cdd8e6;}
   .scrollcue{position:absolute;left:50%;bottom:20px;transform:translateX(-50%);z-index:2;
@@ -143,7 +152,7 @@
   /* ---------- Timeline ---------- */
   .timeline{position:relative;max-width:880px;margin:0 auto;padding-left:8px;}
   .timeline::before{content:"";position:absolute;left:18px;top:6px;bottom:6px;width:2px;
-    background:linear-gradient(var(--rule),var(--rule));}
+    background:linear-gradient(180deg,var(--rule) 0%,var(--accent) 12%,var(--accent) 88%,var(--rule) 100%);opacity:.45;}
   @media(min-width:760px){.timeline::before{left:50%;transform:translateX(-1px);}}
   .node{position:relative;margin:0 0 40px;padding-left:56px;}
   .node::before{content:"";position:absolute;left:11px;top:6px;width:16px;height:16px;border-radius:50%;
@@ -156,7 +165,8 @@
     .node.l::before{right:-8px;left:auto;}
     .node.r::before{left:-8px;}
   }
-  .node .yr{font-family:var(--mono);font-size:.82rem;letter-spacing:.12em;color:var(--accent);font-weight:500;}
+  .node .yr{font-family:var(--serif);font-size:1.5rem;font-weight:600;letter-spacing:.02em;
+    color:var(--accent);font-variant-numeric:oldstyle-nums;display:block;line-height:1;}
   .node h3{margin:6px 0 8px;font-size:1.28rem;}
   .node p{font-size:.98rem;color:var(--muted);margin:0;}
   .node figure{margin:14px 0 0;}
@@ -176,24 +186,26 @@
   .chapter .body p{color:var(--ink);}
   .chapter .body p.note{color:var(--muted);font-size:.96rem;}
   figure{margin:0;}
+  /* Mat-board plate: white mat + hairline frame, like a mounted print */
   figure.framed img{
-    border:1px solid var(--rule);background:#fff;padding:8px;border-radius:3px;
-    box-shadow:var(--shadow);
+    border:1px solid #c9bfae;background:#fff;
+    padding:clamp(10px,1.6vw,18px);border-radius:2px;
+    box-shadow:inset 0 0 0 1px rgba(31,27,22,.06),var(--shadow);
   }
-  figcaption{font-family:var(--mono);font-size:.74rem;line-height:1.55;color:var(--muted);
-    margin-top:10px;letter-spacing:.01em;}
+  figcaption{font-family:var(--mono);font-size:.72rem;line-height:1.6;color:var(--muted);
+    margin-top:12px;letter-spacing:.06em;text-transform:uppercase;}
   .stack{display:grid;gap:16px;}
   .stack-2{grid-template-columns:1fr 1fr;}
   .roster{font-family:var(--mono);font-size:.82rem;color:var(--muted);line-height:1.9;
     border-top:1px solid var(--rule);margin-top:22px;padding-top:16px;}
   .roster b{color:var(--ink);font-weight:500;}
 
-  /* ---------- Gallery ---------- */
-  .grid{columns:240px;column-gap:16px;}
-  .grid figure{break-inside:avoid;margin:0 0 16px;cursor:zoom-in;position:relative;}
-  .grid img{width:100%;border-radius:4px;border:1px solid var(--rule);box-shadow:var(--shadow);
-    transition:transform .35s ease,box-shadow .35s ease;}
-  .grid figure:hover img{transform:translateY(-3px);box-shadow:var(--shadow-lg);}
+  /* ---------- Gallery (plate wall) ---------- */
+  .grid{columns:240px;column-gap:18px;}
+  .grid figure{break-inside:avoid;margin:0 0 18px;cursor:zoom-in;position:relative;}
+  .grid img{width:100%;border-radius:2px;border:1px solid #c9bfae;background:#fff;padding:7px;
+    box-shadow:var(--shadow);transition:transform .35s ease,box-shadow .35s ease;}
+  .grid figure:hover img,.grid figure:focus-visible img{transform:translateY(-3px);box-shadow:var(--shadow-lg);}
   .grid figcaption{margin-top:8px;}
 
   /* ---------- Lightbox ---------- */
@@ -203,6 +215,8 @@
   .lb figure{margin:0;max-width:min(94vw,1200px);max-height:92vh;display:flex;flex-direction:column;align-items:center;}
   .lb img{max-width:100%;max-height:80vh;object-fit:contain;border-radius:4px;box-shadow:0 20px 60px rgba(0,0,0,.6);}
   .lb figcaption{color:#dfe3e8;font-family:var(--mono);font-size:.82rem;margin-top:16px;text-align:center;max-width:70ch;}
+  .lb .plate{display:block;font-size:.62rem;letter-spacing:.22em;text-transform:uppercase;
+    color:#9aa7b8;margin-bottom:8px;}
   .lb button{position:absolute;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.25);
     color:#fff;width:50px;height:50px;border-radius:50%;font-size:1.5rem;cursor:pointer;
     display:flex;align-items:center;justify-content:center;transition:background .2s;}
@@ -298,6 +312,19 @@
     .stack-2{grid-template-columns:1fr;}
   }
 
+  /* ---------- Print ---------- */
+  @media print{
+    header.nav,.scrollcue,.skip,.lb,.nav-toggle{display:none !important;}
+    .hero{min-height:auto;color:var(--ink);}
+    .hero-img,.hero::before,.hero::after{display:none;}
+    .hero h1,.hero .sub,.hero .years,.hero .label,.hero .meta{color:var(--ink);text-shadow:none;}
+    .reveal{opacity:1 !important;transform:none !important;}
+    section{padding:24pt 0;page-break-inside:avoid;}
+    .chapter{page-break-inside:avoid;}
+    a{color:var(--ink);text-decoration:none;}
+    body{font-size:11pt;}
+  }
+
   /* ---------- Respect reduced motion ---------- */
   @media(prefers-reduced-motion:reduce){
     html{scroll-behavior:auto;}
@@ -342,6 +369,7 @@
   <div class="hero-content">
     <p class="label">The Castle Hills Historical Society&nbsp;·&nbsp;75 Years of Community</p>
     <h1>Castle&nbsp;Hills</h1>
+    <p class="years" aria-hidden="true">1951&thinsp;–&thinsp;2026</p>
     <p class="sub">A small Texas city that chose to govern itself — and kept the stories to prove it.</p>
     <p class="meta">Incorporated July 3, 1951&nbsp;&nbsp;—&nbsp;&nbsp;2026</p>
   </div>
@@ -909,123 +937,123 @@
     -->
     <div class="grid" id="gallery-grid">
       <figure data-cap="The Castle Hills Historical Society's 75th-anniversary exhibit (1951–2026).">
-        <img loading="lazy" src="images/IMG_7280.jpg" alt="Wide view of the Castle Hills Historical Society exhibit trifold boards." />
+        <img loading="lazy" src="images/thumbs/IMG_7280.jpg" data-full="images/IMG_7280.jpg" alt="Wide view of the Castle Hills Historical Society exhibit trifold boards." />
         <figcaption>The exhibit, as displayed</figcaption>
       </figure>
       <figure data-cap="An aged printed Map of Bexar County showing surveyed parcels and roads radiating from San Antonio.">
-        <img loading="lazy" src="images/IMG_7345.jpg" alt="Historical Map of Bexar County." />
+        <img loading="lazy" src="images/thumbs/IMG_7345.jpg" data-full="images/IMG_7345.jpg" alt="Historical Map of Bexar County." />
         <figcaption>Map of Bexar County</figcaption>
       </figure>
       <figure data-cap="An annotated aerial photograph marking early landowner families — including the Slimp (1923), Prinz (1912–1950s) families — and the Castle Hills subdivision.">
-        <img loading="lazy" src="images/IMG_7348.jpg" alt="Annotated aerial map of the Castle Hills area showing early family parcels." />
+        <img loading="lazy" src="images/thumbs/IMG_7348.jpg" data-full="images/IMG_7348.jpg" alt="Annotated aerial map of the Castle Hills area showing early family parcels." />
         <figcaption>Who owned the land</figcaption>
       </figure>
       <figure data-cap="A photocopied subdivision plat of Castle Hills, surveyed by L. E. Felton, showing numbered blocks and lots.">
-        <img loading="lazy" src="images/IMG_7349.jpg" alt="Subdivision plat map of Castle Hills." />
+        <img loading="lazy" src="images/thumbs/IMG_7349.jpg" data-full="images/IMG_7349.jpg" alt="Subdivision plat map of Castle Hills." />
         <figcaption>The subdivision plat</figcaption>
       </figure>
       <figure data-cap="A framed 1951 sample ballot and poll list for the election to incorporate the Town of Castle Hills, held June 16, 1951.">
-        <img loading="lazy" src="images/IMG_7309.jpg" alt="Framed 1951 incorporation sample ballot and poll list." />
+        <img loading="lazy" src="images/thumbs/IMG_7309.jpg" data-full="images/IMG_7309.jpg" alt="Framed 1951 incorporation sample ballot and poll list." />
         <figcaption>The incorporation ballot, 1951</figcaption>
       </figure>
       <figure data-cap="A surveyor's level engraved 'City of Castle Hills,' shown in its wooden carrying case with early instruments and tools.">
-        <img loading="lazy" src="images/IMG_7310.jpg" alt="A surveyor's level marked City of Castle Hills." />
+        <img loading="lazy" src="images/thumbs/IMG_7310.jpg" data-full="images/IMG_7310.jpg" alt="A surveyor's level marked City of Castle Hills." />
         <figcaption>The city's surveyor's level</figcaption>
       </figure>
       <figure data-cap="The Slimp 'Castle' and grounds — a stone, Spanish-style house with mosaic-tiled patios and gardens.">
-        <img loading="lazy" src="images/IMG_7332.jpg" alt="The Slimp Castle house and grounds." />
+        <img loading="lazy" src="images/thumbs/IMG_7332.jpg" data-full="images/IMG_7332.jpg" alt="The Slimp Castle house and grounds." />
         <figcaption>The Castle on the hill</figcaption>
       </figure>
       <figure data-cap="A 1923 newspaper feature with engravings of the new Slimp country home at West Avenue and Lockhill-Selma Road.">
-        <img loading="lazy" src="images/IMG_7333.jpg" alt="1923 newspaper feature on the Slimp home." />
+        <img loading="lazy" src="images/thumbs/IMG_7333.jpg" data-full="images/IMG_7333.jpg" alt="1923 newspaper feature on the Slimp home." />
         <figcaption>“Unusually attractive,” 1923</figcaption>
       </figure>
       <figure data-cap="A sepia portrait of Helen Ferne Goolsby Slimp, stained-glass artist, who lived to 105.">
-        <img loading="lazy" src="images/IMG_7336.jpg" alt="Portrait of Helen Ferne Goolsby Slimp." />
+        <img loading="lazy" src="images/thumbs/IMG_7336.jpg" data-full="images/IMG_7336.jpg" alt="Portrait of Helen Ferne Goolsby Slimp." />
         <figcaption>Helen Slimp</figcaption>
       </figure>
       <figure data-cap="Stained-glass works attributed to Helen Slimp on the exhibit, including the Good Shepherd and Hermann the Cherusker (Hermann Sons Lodge, 1921).">
-        <img loading="lazy" src="images/IMG_7337.jpg" alt="Stained-glass windows by Helen Slimp." />
+        <img loading="lazy" src="images/thumbs/IMG_7337.jpg" data-full="images/IMG_7337.jpg" alt="Stained-glass windows by Helen Slimp." />
         <figcaption>Her glass designs</figcaption>
       </figure>
       <figure data-cap="A 1939 San Antonio Light clipping: Chester Slimp hands over cash to help save the Y.M.C.A. building, alongside a photo of the early City Hall.">
-        <img loading="lazy" src="images/IMG_7334.jpg" alt="Clippings about Chester Slimp's civic work and the early City Hall." />
+        <img loading="lazy" src="images/thumbs/IMG_7334.jpg" data-full="images/IMG_7334.jpg" alt="Clippings about Chester Slimp's civic work and the early City Hall." />
         <figcaption>Chester Slimp, civic man</figcaption>
       </figure>
       <figure data-cap="The exhibit's list of the most likely reasons for founding Castle Hills, framed by early photographs.">
-        <img loading="lazy" src="images/IMG_7350.jpg" alt="Founding-reasons board with early photographs." />
+        <img loading="lazy" src="images/thumbs/IMG_7350.jpg" data-full="images/IMG_7350.jpg" alt="Founding-reasons board with early photographs." />
         <figcaption>Why a city was founded</figcaption>
       </figure>
       <figure data-cap="First Mayor Leonard Yeckel with his family, and the 'Family Affair' clipping noting his father-in-law, alderman A. L. Dolch.">
-        <img loading="lazy" src="images/IMG_7344.jpg" alt="Leonard Yeckel family photograph." />
+        <img loading="lazy" src="images/thumbs/IMG_7344.jpg" data-full="images/IMG_7344.jpg" alt="Leonard Yeckel family photograph." />
         <figcaption>The first mayor's family</figcaption>
       </figure>
       <figure data-cap="A 'Past Businesses' board: Piggly Wiggly, the 'one million stamps' promotion, and assorted store advertisements.">
-        <img loading="lazy" src="images/IMG_7313.jpg" alt="Past Businesses exhibit board." />
+        <img loading="lazy" src="images/thumbs/IMG_7313.jpg" data-full="images/IMG_7313.jpg" alt="Past Businesses exhibit board." />
         <figcaption>Past businesses</figcaption>
       </figure>
       <figure data-cap="The Castle Hills Town Club board — Sadie Hawkins dances and the Melody Buccaneers, at West Avenue and Jackson-Keller Road.">
-        <img loading="lazy" src="images/IMG_7315.jpg" alt="Castle Hills Town Club board." />
+        <img loading="lazy" src="images/thumbs/IMG_7315.jpg" data-full="images/IMG_7315.jpg" alt="Castle Hills Town Club board." />
         <figcaption>The Town Club</figcaption>
       </figure>
       <figure data-cap="'Alfredo's Presents Willie Nelson' — the former Bric's Club at 1810 NW Military Highway.">
-        <img loading="lazy" src="images/IMG_7316.jpg" alt="Alfredo's presents Willie Nelson advertisement board." />
+        <img loading="lazy" src="images/thumbs/IMG_7316.jpg" data-full="images/IMG_7316.jpg" alt="Alfredo's presents Willie Nelson advertisement board." />
         <figcaption>Willie Nelson at Alfredo's</figcaption>
       </figure>
       <figure data-cap="The aviation panel for Dee Howard: Howard Aero Service, a portrait, an aircraft, and luxury jet interiors.">
-        <img loading="lazy" src="images/IMG_7319.jpg" alt="Dee Howard aviation board." />
+        <img loading="lazy" src="images/thumbs/IMG_7319.jpg" data-full="images/IMG_7319.jpg" alt="Dee Howard aviation board." />
         <figcaption>Dee Howard, aviator</figcaption>
       </figure>
       <figure data-cap="Bill White speaking, a 'Bill White for Texas' sign, and a painted portrait of his brother, composer Robert Avalon, at a piano.">
-        <img loading="lazy" src="images/IMG_7322.jpg" alt="Bill White and Robert Avalon board." />
+        <img loading="lazy" src="images/thumbs/IMG_7322.jpg" data-full="images/IMG_7322.jpg" alt="Bill White and Robert Avalon board." />
         <figcaption>Bill White &amp; Robert Avalon</figcaption>
       </figure>
       <figure data-cap="The Hansen Quadruplets — Allison, Brooke, Claire, and Darcy — born October 1974, shown on a talk-show couch.">
-        <img loading="lazy" src="images/IMG_7320.jpg" alt="Hansen Quadruplets board." />
+        <img loading="lazy" src="images/thumbs/IMG_7320.jpg" data-full="images/IMG_7320.jpg" alt="Hansen Quadruplets board." />
         <figcaption>The Hansen Quadruplets</figcaption>
       </figure>
       <figure data-cap="The 'Famous and Infamous' board, including interior designer Orville Carr and anchorwoman Debora Daniels.">
-        <img loading="lazy" src="images/IMG_7317.jpg" alt="Famous and Infamous residents board." />
+        <img loading="lazy" src="images/thumbs/IMG_7317.jpg" data-full="images/IMG_7317.jpg" alt="Famous and Infamous residents board." />
         <figcaption>Famous &amp; infamous</figcaption>
       </figure>
       <figure data-cap="The 'West Ave. Casino Poker Chips' panel — vintage chips bearing a monogram from Tom Moore's games.">
-        <img loading="lazy" src="images/IMG_7284.jpg" alt="West Avenue casino poker chips panel." />
+        <img loading="lazy" src="images/thumbs/IMG_7284.jpg" data-full="images/IMG_7284.jpg" alt="West Avenue casino poker chips panel." />
         <figcaption>The casino's poker chips</figcaption>
       </figure>
       <figure data-cap="A 1956 San Antonio Express clipping: 'One Nabbed In Bookie Raid Here' — a raid at 6701 West Avenue, Castle Hills.">
-        <img loading="lazy" src="images/IMG_7285.jpg" alt="1956 bookie raid clipping." />
+        <img loading="lazy" src="images/thumbs/IMG_7285.jpg" data-full="images/IMG_7285.jpg" alt="1956 bookie raid clipping." />
         <figcaption>The 1956 raid</figcaption>
       </figure>
       <figure data-cap="The central exhibit panel: '6701 West Avenue: Home of the World Series of Poker.'">
-        <img loading="lazy" src="images/IMG_7281.jpg" alt="6701 West Avenue World Series of Poker panel." />
+        <img loading="lazy" src="images/thumbs/IMG_7281.jpg" data-full="images/IMG_7281.jpg" alt="6701 West Avenue World Series of Poker panel." />
         <figcaption>Home of the World Series of Poker</figcaption>
       </figure>
       <figure data-cap="A 1972 clipping on the bombing of the King Arthur's Court night club on Jackson-Keller Road, with a photo of rubble.">
-        <img loading="lazy" src="images/IMG_7292.jpg" alt="1972 King Arthur's Court bombing clipping." />
+        <img loading="lazy" src="images/thumbs/IMG_7292.jpg" data-full="images/IMG_7292.jpg" alt="1972 King Arthur's Court bombing clipping." />
         <figcaption>The 1972 bombing</figcaption>
       </figure>
       <figure data-cap="A clipping headlined 'Castle Hills Shot Fatal,' with a 1957 garden photograph of Mrs. Sabina Dibble.">
-        <img loading="lazy" src="images/IMG_7296.jpg" alt="Dibble case clipping." />
+        <img loading="lazy" src="images/thumbs/IMG_7296.jpg" data-full="images/IMG_7296.jpg" alt="Dibble case clipping." />
         <figcaption>The Dibble case</figcaption>
       </figure>
       <figure data-cap="'Castle Hills Community Groups' — the city seal (1951), the police badge, the Fire Rescue patch, and a groundbreaking photo.">
-        <img loading="lazy" src="images/IMG_7325.jpg" alt="Castle Hills Community Groups board." />
+        <img loading="lazy" src="images/thumbs/IMG_7325.jpg" data-full="images/IMG_7325.jpg" alt="Castle Hills Community Groups board." />
         <figcaption>The community groups</figcaption>
       </figure>
       <figure data-cap="Police and fire history photographs, including a 1957 palm-tree planting at the new City Hall and 1967 fire equipment.">
-        <img loading="lazy" src="images/IMG_7326.jpg" alt="Police and fire history board." />
+        <img loading="lazy" src="images/thumbs/IMG_7326.jpg" data-full="images/IMG_7326.jpg" alt="Police and fire history board." />
         <figcaption>Police &amp; fire history</figcaption>
       </figure>
       <figure data-cap="Fiesta Castle Hills — festival photographs, Fiesta medals, and the logos of the city's civic organizations.">
-        <img loading="lazy" src="images/IMG_7330.jpg" alt="Fiesta Castle Hills board." />
+        <img loading="lazy" src="images/thumbs/IMG_7330.jpg" data-full="images/IMG_7330.jpg" alt="Fiesta Castle Hills board." />
         <figcaption>Fiesta Castle Hills</figcaption>
       </figure>
       <figure data-cap="Commemorative enamel pins: '1951–2026, 75 Years of Community.'">
-        <img loading="lazy" src="images/IMG_7339.jpg" alt="75 Years of Community commemorative pins." />
+        <img loading="lazy" src="images/thumbs/IMG_7339.jpg" data-full="images/IMG_7339.jpg" alt="75 Years of Community commemorative pins." />
         <figcaption>75 years of community</figcaption>
       </figure>
       <figure data-cap="Sugar cookies iced with 'CH' for Castle Hills, made for the anniversary.">
-        <img loading="lazy" src="images/IMG_7340.jpg" alt="Castle Hills anniversary cookies iced with CH." />
+        <img loading="lazy" src="images/thumbs/IMG_7340.jpg" data-full="images/IMG_7340.jpg" alt="Castle Hills anniversary cookies iced with CH." />
         <figcaption>An anniversary treat</figcaption>
       </figure>
     </div>
@@ -1153,9 +1181,14 @@
     current = i;
     var fig = figures[i];
     var img = fig.querySelector('img');
-    lbImg.src = img.getAttribute('src');
+    lbImg.src = img.getAttribute('data-full') || img.getAttribute('src');
     lbImg.alt = img.getAttribute('alt') || '';
-    lbCap.textContent = fig.getAttribute('data-cap') || '';
+    lbCap.innerHTML = '';
+    var plate = document.createElement('span');
+    plate.className = 'plate';
+    plate.textContent = 'Plate ' + (i + 1) + ' of ' + figures.length;
+    lbCap.appendChild(plate);
+    lbCap.appendChild(document.createTextNode(fig.getAttribute('data-cap') || ''));
   }
   function open(i){
     lastFocus = document.activeElement;
